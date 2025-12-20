@@ -1,0 +1,21 @@
+'#1 - Starý Most' DONE
+'#10 - Dunajská': DONE
+'#11 - Most Apollo': NA
+'#12 - Železná studnička' DONE
+'#13 - Vajanského 1' DONE
+'#14 - Vajanského 2' DONE
+'#15 - Incheba Einsteinova' DONE
+'#16 - Trenčianska' NA
+'#17 - Dunajská/Lazaretská' DONE
+'#2 - Starý most 2'
+'#3 - River Park' DONE
+'#4 - Dolnozemská'
+'#5 - Devínska cesta'
+'#6 - Vajnorská'
+'#7 - Vajnorská > NTC'
+'#8 - Most SNP' NA
+'#9 - Páričkova'
+'Cyklomost Slobody'
+'Devinska Nova Ves'
+'Hradza Berg'
+'Viedenska'
