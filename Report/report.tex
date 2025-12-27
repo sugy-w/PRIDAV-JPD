@@ -1,0 +1,167 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[IL2]{fontenc}
+\usepackage[slovak]{babel}
+\usepackage[margin=3cm,
+            top=1.5cm,
+            includeheadfoot,
+            footskip=1cm]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{pbox}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{array}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\bigone}{\mbox{\normalfont\Large\bfseries 1}}
+\renewcommand{\thechapter}{\arabic{chapter}}
+
+\newcommand*{\vertbar}{\rule[-1ex]{0.5pt}{2.5ex}}
+\newcommand*{\horzbar}{\rule[.5ex]{2.5ex}{0.5pt}}
+\newenvironment{lbmatrix}[1]
+  {\left[\array{{c}*{#1}{c}@{}}}
+  {\endarray\right]}
+\begin{document}
+  \begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Analýza dát zo cyklosčítačov v Bratislave}
+            
+        \vspace{0.5cm}
+        \LARGE
+        Tím: Jednotné programovacie družstvo a.s.
+
+\vspace{0.5cm}
+\LARGE 
+
+Lucia Ganajová
+
+Tuan Dávid Nguyen Van
+
+Jakub Novotný
+
+Marek Šugár
+        
+
+        \vfill
+        
+        \Large
+
+        
+        Fakulta matematiky, fyziky a informatiky\\
+        Univerzita Komenského v Bratislave\\
+        2026
+            
+    \end{center}
+\end{titlepage}
+
+\chapter*{Úvod}
+
+V posledných rokoch je z hľadiska urbánneho plánovania badať tendencie
+znižovania akejsi nadvlády áut v uliciach. Práve naopak, najmä v krajských mestách
+je zvyšovaný dôraz na budovania infraštruktúr pre chodcov a cyklistov. Výnimkou nie je ani Bratislava,
+v ktorej v posledných rokoch je možné pozorovať nárast práve prepravy po dvoch kolesách.
+\newline
+\par
+Magistrát mesta aj z dôvodu ďalšej analýzy inštaloval od roku $2014$ na niektorých úsekoch cyklotrás 
+sčítače, ktoré s hodinovou frekvenciou akumulujú absolútne početnosti cyklistov, ktorí v danom časovom intervale
+prešli ktorýmkoľvek z dvoch smerov. Toto veľké množstvo dát vytvára priestor na hlbšie analýzy, ktoré bližšie
+dokážu opísať správanie obyvateľov Bratislavy.
+\newline
+\par
+V tomto reporte je cieľom poukázať na zaujímavé interpretačné dôsledky, vychádzajúce z dát. Dôraz je kladený 
+interpretáciu dát s rôznou frekvenciou a spojitosti, resp. rozdielnosti medzi jednotlivými cyklotrasami. Okrem iného, hlbší
+dôraz je kladený spojitosť celkovej vyťaženosti cyklotrás s počasím. 
+\newline
+\par
+Report vznikol ako jeden z podkladov riešenia semestrálneho projektu v rámci predmetu \textbf{Princípy dátovej vedy}
+na v zimnom semestri 2025-2026 na Fakulte matematiky, fyziky a informatiky Univerzity Komenského v Bratislave.
+
+
+\begin{flushright}
+\textit{v Bratislave, január 2026}
+\par
+autori
+\end{flushright}
+
+%% Toto sa bude dokončovať vzhľadom na obsah, ktorý bude
+
+\tableofcontents
+
+\clearpage
+
+\chapter{Spojitosť vyťaženia cyklotrás a počasia}
+
+Pre účely bližšieho porozumenia vplyvu stavu počasia v Bratislave na celkový 
+počet absolútnych prejazdov po jednotlivých cyklotrasách je možné zvoliť viacero 
+možných prístupov. V projekte bol zvolený prístup tréningu vybraných algoritmov strojového učenia
+a následnej evaluácie predikovania modelov.
+
+\section{Predspracovanie dát}
+
+Dostupné dátové zdroje poskytujú s hodinovou frekvenciou informácie o počte prejazdov
+v oboch smeroch na danej cyklotrase. Dátové zdroje akumulujúce údaje o stave počasie boli avšak 
+dostupné v spoľahlivej podobe iba s dennou frekvenciou.
+\newline
+\par
+Z tohoto dôvodu bolo vhodné agregovať dáta z jednotlivých dostupných hodín prejazdov do konkrétnych dní. Pre účely
+priamočiarejšej a úspornejšej interpretácie má zmysel agregovať aj dáta z oboch smerov cyklotrasy dokopy – tým získavame
+počet denných prejazdov na cyklotrase celkovo. Pre účely interpretácie vplyvu počasia je to z apriórneho hľadiska postačujúce,
+z hľadiska dostupných dátových zdrojov jedna z mála možností.
+\newline
+\par
+Počasie dátový zdroj zrkadlí pomocou viacerých čiastkových premenných, niektoré viacej aj menej interpretačne uchopiteľné. 
+Z relatívne bohatého dátového zdroja je možné vybrať reprezentatívnu podvzorku premenných – využívame prístup interpretačnej
+spojitosti na základe istého poznania správania.
+\newline
+\par
+Do našej využitej množiny premenných zaraďujeme údaje o teplote – \textbf{priemerná teplota}, \textbf{minimálna} a \textbf{maximálna teplota}.
+Na základe týchto dát je možné očakávať priamu úmeru s absolútnym počtom prejazdov cyklotrasou. Vyššie teploty počas dňa pravdepodobne indukujú
+vyšší počet prejazdov, vyššiu tendenciu ľudí uprednostniť tento dopravný prostriedok pred napr. \textit{autom, MHD} a pod.
+\newline
+\par
+Významný vplyv na vyťaženosť cyklotrasy a na s ním prepojený sentiment obyvateľov voči cyklodoprave má určite \textbf{spád zrážok}. Do databázy premenných boli 
+vložené obe dostupné metriky spádu zrážok – spád dažďových a snehových zrážok.
+\newline
+\par
+Okrem iného významnými metrikami sú \textbf{rýchlosť vetra} a \textbf{tlak}. Prvá spomenutá metrika má dozaista vplyv tendenciu ľudí
+uprednostniť dopravu bicyklom, spoločne s tlakom vzduchu, ktorý má významný vplyv na vyvíjanú biozáťaž a tendenciu ľudí vykonávať fyzickú 
+záťaž na rámec, takpovediac, \textit{nutnosti}.
+\newline
+\par
+Pri delení dát do zodpovedajúcich tréningových, validačných a testovacích množín dát je nutné zachovať chronologickú následnosť dát,
+keďže v podstate sa jedná o časové rady a neuváženým prístupom k deleniu je možné disponovať skreslednými, zväčša nadhodnotenými, výsledkami
+výkonnosti modelov.
+\newline
+\par
+Z dôvodu variabilnej dĺžky monitorovaného časového intervalu pre rôzne cyklotrasy nie je možné pristupovať k deľbe pomocou fixných časových breakpointov.
+V projekte bol využitý prístup rozdelenia celkového intervalu v pomere $6:3:1$ pre tréningovú, validačnú a testovaciu množinu. Postupnosť dátových vstupov je zabezpečená
+zachovaním vzájomnej následnosti jednotlivých podintervalov. Tréningová množina predstavuje prvých $60 \%$ dát, validačná nasledujúcich $30 \%$ a zvyšok testovacia množina. 
+
+\section{Lineárna regresia}
+
+Prvotnou ideou spomedzi klasických prístupov strojového učenia je lineárna regresia. Na tomto mieste je vhodné ozrejmiť aj metriku úspešnosti modelovania, 
+na ktorú budeme výkonnosti modelov reflektovať. V kapitole je využitá \textbf{priemerná absolútna odchýlka}, normalizovaná zodpovedajúcim priemerom ako $\frac{MAE(Y, \hat{Y})}{\overline{Y}}$, 
+kde $Y$ označuje skutočnú hodnotu prejazdov, $\hat{Y}$ predikcia modelu a $\overline{Y}$ priemer skutočných hodnôt. Normalizácia je
+vhodná najmä z dôvodu relativizácie presnosti predikcie medzi rôznymi cyklotrasami. Metrika \textbf{priemernej absolútnej percentuálnej odchýlky (MAPE)} sa preukázala byť zväčša 
+numericky nestabilná, pri veľmi nízkych skutočných počtoch prejazdov a i napriek tomu relatívne presnej predikcii metriky indikovala abnormálne vysoké hodnoty. 
+\newline
+\par
+Výkonnosti modelovania pre jednotlivé cyklotrasy sú vizualizované na \textit{Obrázku 1}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/LR_mae.png}
+    \caption{Presnosť modelovania počtu prejazdov cyklotrasou lineárnou regresiou.}
+\end{figure}
+
+Je možné pozorovať pomerne široké spektrum presností - nižšie aj vyššie odchýlky.
+
+\section{Penalizované lineárne regresie}
+
+\end{document}
