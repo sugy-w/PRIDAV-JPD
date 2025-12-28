@@ -1,10 +1,14 @@
 # Fdb version 4
-["pdflatex"] 1766848262.40767 "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.tex" "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.pdf" "report" 1766848263.25432 0
+["pdflatex"] 1766951177.74967 "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.tex" "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.pdf" "report" 1766951178.76822 0
   "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/LR_mae.png" 1766847976.40735 45654 e4a727839b0e13de79fb5c85623b536f ""
-  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.aux" 1766848263.15019 1136 ccc301a9d54c28fa3dd55caf70f5cd9d "pdflatex"
-  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.out" 1766848263.15098 781 5503a776fea7ee492873db9cd9bb6ebc "pdflatex"
-  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.tex" 1766848261.26477 7756 a9b1557995ab0145934ae7737198efd8 ""
-  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.toc" 1766848263.15126 379 f279707b17423414b07ba70e0da15790 "pdflatex"
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/comparison.png" 1766938259.97016 20139 4d08943f61c4c28ae8362898b4438eb7 ""
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/comparison_rain.png" 1766941429.60113 18372 febd5aad9230e830e2e755bcda00efaf ""
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/comparison_t.png" 1766940833.08944 19085 a2942bd1ee18100fab0b565f7a97ac59 ""
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/vsicko.png" 1766949870.69387 51025 b990c9336dc06ec5f324a375d9386695 ""
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.aux" 1766951178.65095 2875 df695f4569c6723e06b1698d155ad1a6 "pdflatex"
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.out" 1766951178.65188 1214 048c951ade2fba23a4fe783e92fee641 "pdflatex"
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.tex" 1766951176.42982 15657 a834e028ed746edd7742f21ba7af0881 ""
+  "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.toc" 1766951178.65219 560 2a364222b0d6678ddaeb7108bb6175da "pdflatex"
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/map/fontname/texfonts.map" 1741388039 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1741388039 5466553 2748998d7db8078826afa1f272036265 ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1741388039 1004 54797486969f23fa377b128694d548df ""
@@ -24,6 +28,8 @@
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1741388039 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1741388039 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1741388039 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
+  "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1741388039 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1741388039 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csbx10.pfb" 1741388039 33323 7572c031b308b577f5f3cb67f74e81d8 ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csbx12.pfb" 1741388039 33135 4d457754751d0f989450d5c86169cb25 ""
   "/usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr10.pfb" 1741388039 33670 0281059e307ed50e869276422e845f89 ""

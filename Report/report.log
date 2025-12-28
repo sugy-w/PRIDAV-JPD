@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  27 DEC 2025 16:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025/Homebrew) (preloaded format=pdflatex 2025.11.7)  28 DEC 2025 20:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -484,7 +484,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--154
 
  []
 
-<images/LR_mae.png, id=49, 455.301pt x 339.669pt>
+<images/LR_mae.png, id=60, 455.301pt x 339.669pt>
 File: images/LR_mae.png Graphic file (type png)
 <use images/LR_mae.png>
 Package pdftex.def Info: images/LR_mae.png  used on input line 159.
@@ -495,30 +495,117 @@ Package pdftex.def Info: images/LR_mae.png  used on input line 159.
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.167 \end{document}
-                     </Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/LR_mae.png>]
+l.167 
+       </Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/LR_mae.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 169--174
 
-[5] (/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.aux)
+ []
+
+<images/comparison.png, id=73, 615.0177pt x 269.5671pt>
+File: images/comparison.png Graphic file (type png)
+<use images/comparison.png>
+Package pdftex.def Info: images/comparison.png  used on input line 181.
+(pdftex.def)             Requested size: 399.21791pt x 174.98207pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--189
+
+ []
+
+<images/comparison_t.png, id=75, 615.0177pt x 269.5671pt>
+File: images/comparison_t.png Graphic file (type png)
+<use images/comparison_t.png>
+Package pdftex.def Info: images/comparison_t.png  used on input line 194.
+(pdftex.def)             Requested size: 399.21791pt x 174.98207pt.
+
+
+[5
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.197 \end{figure}
+                   </Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/comparison.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 200--203
+
+ []
+
+<images/comparison_rain.png, id=83, 615.0177pt x 269.5671pt>
+File: images/comparison_rain.png Graphic file (type png)
+<use images/comparison_rain.png>
+Package pdftex.def Info: images/comparison_rain.png  used on input line 209.
+(pdftex.def)             Requested size: 399.21791pt x 174.98207pt.
+
+
+[6
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.3}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.217 
+      
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.217 
+       </Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/comparison_t.png> </Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/comparison_rain.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--224
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--229
+
+ []
+
+<images/vsicko.png, id=96, 455.301pt x 339.669pt>
+File: images/vsicko.png Graphic file (type png)
+<use images/vsicko.png>
+Package pdftex.def Info: images/vsicko.png  used on input line 234.
+(pdftex.def)             Requested size: 354.86412pt x 264.74898pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 239--243
+
+ []
+
+
+
+[7
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.245 Z
+       áverom je možné konštatovať viacero záverov. Prístupom trénov... </Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/images/vsicko.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 245--249
+
+ []
+
+
+
+[8]
+Kapitola 2.
+
+
+[9
+
+] (/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 5503A776FEA7EE492873DB9CD9BB6EBC;781.
+(rerunfilecheck)             Checksum: 048C951ADE2FBA23A4FE783E92FEE641;1214.
  ) 
 Here is how much of TeX's memory you used:
- 12105 strings out of 473190
- 189911 string characters out of 5705898
- 600343 words of memory out of 5000000
- 35188 multiletter control sequences out of 15000+600000
+ 12150 strings out of 473190
+ 190860 string characters out of 5705898
+ 600867 words of memory out of 5000000
+ 35223 multiletter control sequences out of 15000+600000
  566284 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,369b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr12.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr17.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csti10.pfb>
-Output written on "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.pdf" (6 pages, 137630 bytes).
+ 75i,6n,79p,456b,519s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csbx10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csbx12.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr10.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr12.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csr17.pfb></usr/local/Cellar/texlive/20250308_2/share/texmf-dist/fonts/type1/public/cs/csti10.pfb>
+Output written on "/Users/mareksugar/Desktop/Semestrálny projekt PRIDAV/Report/report.pdf" (10 pages, 252629 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
- 13 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 74 words of extra memory for PDF output out of 10000 (max. 10000000)
 

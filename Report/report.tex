@@ -39,13 +39,13 @@
 \vspace{0.5cm}
 \LARGE 
 
-Lucia Ganajová
-
-Tuan Dávid Nguyen Van
-
-Jakub Novotný
-
 Marek Šugár
+
+%Lucia Ganajová
+
+%Tuan Dávid Nguyen Van
+
+%Jakub Novotný
         
 
         \vfill
@@ -146,22 +146,112 @@ zachovaním vzájomnej následnosti jednotlivých podintervalov. Tréningová mn
 \section{Lineárna regresia}
 
 Prvotnou ideou spomedzi klasických prístupov strojového učenia je lineárna regresia. Na tomto mieste je vhodné ozrejmiť aj metriku úspešnosti modelovania, 
-na ktorú budeme výkonnosti modelov reflektovať. V kapitole je využitá \textbf{priemerná absolútna odchýlka}, normalizovaná zodpovedajúcim priemerom ako $\frac{MAE(Y, \hat{Y})}{\overline{Y}}$, 
+na ktorú budeme reflektovať výkonnosti modelov. V kapitole je využitá \textbf{priemerná absolútna odchýlka}, normalizovaná zodpovedajúcim priemerom ako $\frac{MAE(Y, \hat{Y})}{\overline{Y}}$, 
 kde $Y$ označuje skutočnú hodnotu prejazdov, $\hat{Y}$ predikcia modelu a $\overline{Y}$ priemer skutočných hodnôt. Normalizácia je
 vhodná najmä z dôvodu relativizácie presnosti predikcie medzi rôznymi cyklotrasami. Metrika \textbf{priemernej absolútnej percentuálnej odchýlky (MAPE)} sa preukázala byť zväčša 
 numericky nestabilná, pri veľmi nízkych skutočných počtoch prejazdov a i napriek tomu relatívne presnej predikcii metriky indikovala abnormálne vysoké hodnoty. 
 \newline
 \par
-Výkonnosti modelovania pre jednotlivé cyklotrasy sú vizualizované na \textit{Obrázku 1}.
+Výkonnosti modelovania pre jednotlivé cyklotrasy sú vizualizované na Obrázku \ref{obr1.1}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/LR_mae.png}
     \caption{Presnosť modelovania počtu prejazdov cyklotrasou lineárnou regresiou.}
+    \label{obr1.1}
 \end{figure}
 
-Je možné pozorovať pomerne široké spektrum presností - nižšie aj vyššie odchýlky.
+Je možné pozorovať pomerne široké spektrum presností - nižšie aj vyššie odchýlky. Odchýlky na úrovni približne $20 \%$ pozorujeme pri 
+dvoch cyklocestách – \textbf{Páričkova} a obe z trás na \textbf{Starom moste}. Nadpolovičná väčšina analyzovaných trás dosahuje relatívne odchýlky na úrovni pod $40 \%$.
+Obzvlášť vyššie odchýlky naopak dosahuje cyklotrase spájajúca Karlovu Ves a Devín na \textbf{Devínskej ceste}, kde odchýlka presahuje hranicu $100 \%$.
 
-\section{Penalizované lineárne regresie}
+\section{Interpretácia výsledkov}
+Na základe usporiadanej vizualizácie na Obrázku \ref{obr1.1}, je možné čiastočne načrtnúť odpoveď na otázku vplyvov počasia na absolútny počet prejazdov cyklotrasami. Toto vzostupné usporiadanie
+odchýlok preukazuje klesajúcu mieru vplyvu počasia na početnosť prejazdov. Cyklotrasy s nižšou odchýlkou sú pravdepodobne silnejšie previazané s priebehom počasia a tie s vyššou odchýlkou naopak. Pozoruhodné je pozorovanie,
+že v prvej polovici cyklotrás s najvyššou mierou previazania, sa nachádzajú len cyklotrasy v rámci centra, resp. širšieho centra alebo Petržalky. V druhej polovici, sa nachádzajú \textit{(s výnimkou Mosta SNP a Apollo)} len cyklotrasy
+nachádzajúce sa skôr na perifériách mesta – napr. Cyklomost Slobody, Hrádza, Železná studnička a pod.
+\newline
+\par
+Táto skutočnosť je pomerne uchopiteľná. Cyklotrasy nachádzajúceho sa v intezívnejšie obývaných častiach mesta, pravdepodobne viacej slúžia ako 
+prostriedok dopravy do školy alebo zamestnania a teda môžu byť využívané takpovediac univerzálne – za každého počasia a približne v rovnakej miere počas týždňa. Opačne, periférnejšie cyklotrasy sú pravdepodobne využívané väčšinou rekreačne, pravdepodobne v rámci víkendov. 
+Na Obrázku \ref{obr1.2} je možné vidieť porovnanie dvoch cyklotrás, jednej v centre a druhej na periférií, z hľadiska priemerného počtu prejazdov počas týždňa, kde je zrejmá koncentrickosť využívania cez víkend na periférnej trase a približne rovnomerné využívanie počas celého týždňa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/comparison.png}
+    \caption{Porovnanie priemerného počtu prejazdov na trasách počas celého týždňa.}
+    \label{obr1.2}
+\end{figure}
+
+Táto skutočnosť je aspoň čiastočným vysvetlením získaných výsledkov. Periférnejšie – rekreačnejšie trasy sú využívané skôr na voľnočasové jazdy, na čo má pravdepodobne vysoký vplyv počasie. Predpokladáme, že existuje veľmi nízke množstvo
+prejazdov na týchto trasách, napr. keď prší alebo sneží. Naopak, centrálnejšie trasy sú využívané univerzálnejšie, ako prostriedok dopravy do zamestnania, resp. školy po celý rok – celý týždeň.
+\newline
+\par
+Táto skutočnosť je pomerne vhodne vizualizovaná na Obrázku \ref{obr1.3}, ktorý porovnáva priemernú využiteľnosť trás Riverpark a Hrádza - Berg v dňoch s teplotami $> 20 ^\circ C$ a $\leq 20 ^\circ C$ počas dňa. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/comparison_t.png}
+    \caption{Porovnanie priemerného počtu prejazdov na trasách na základe teploty.}
+    \label{obr1.3}
+\end{figure}
+
+
+Preukazuje sa, že pri analýze dní na základe teploty počas dňa, pozorujeme v priemere pokles prejazdov v oboch trasách, na Hrádza - Berg o necelých $60 \%$ a na trase Riverpark o $47.44 \%$. Toto správanie bolo preukázané
+vo všetkých trasách mimo centra – percentuálny pokles je vyšší, ako pri centrálnejších. Táto skutočnosť preukazuje, že trasy mimo centra sú pravdepodobne viacej previazané na niektoré metriky počasia počas dňa.
+\newline
+\par
+Na druhú stranu, je vhodné poukázať na odlišné správanie tohto hľadiska pri inej metrike počasia. Na Obrázku \ref{obr1.4} je vyobrazený 
+priemerný počet prejazdov trasou v dňoch s nulovým a nenulovým spádom zrážok počas dňa.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/comparison_rain.png}
+    \caption{Porovnanie priemerného počtu prejazdov na trasách na základe spádu zrážok počas dňa.}
+    \label{obr1.4}
+\end{figure}
+
+V tomto prípade nie je rozdiel v percentuálnych poklesoch ľahko badateľný. Na trase Hrádza - Berg pozorujeme pokles na úrovni $36.96 \%$ a na trase Riverpark $34.89 \%$. I napriek rovnakému usporiadaniu,
+čiže vyšší pokles pri Hrádza - Berg, čo podporuje našu hypotézu, je rozdiel medzi jednotlivými trasami významne menší. To nás privádza k potenciálnemu použitiu modelovania s využitím istej formy výberu podvzorky 
+premenných. 
+
+\section{Penalizované lineárne regresie (LASSO, RIDGE)}
+
+V sekcii vyššie bolo preukázané, že pravdepodobne závisí od toho, na základe ktorej metriky diferencujeme vplyv počasia na počet prejazdov trasou. Z toho titulu 
+môže byť vhodné využiť penalizovanú lineárnu regresiu a jej metriky úspešnosti modelovania porovnať s lineárnou regresiou. V tomto prípade má zmysel hypertunovať 
+parameter modelu $\lambda$.
+\newline
+\par
+V tomto prípade sme zvolil prístup validácie modelov pre jednotlivé trasy na validačných dátach s rôznymi $\lambda \in \{ 0.01, 0.02, ..., 2\}$ pre LASSO 
+a $\lambda \in \{0.01, 0.02, ..., 10\}$ pre RIDGE. Samotné horné a dolné hranice boli odvodené porovnávaním viacerých hodnôt odchýlok, analyzovaním intenzity regularizácie
+a nakoniec aj bližšou analýzou priebehu odchýlok s rastúcou $\lambda$-regularizáciou.
+\newline
+\par
+Na Obrázku \ref{obr1.5} vyobrazujeme výslednú analýzu odchýlok pre jednotlivé regularizácie, v porovnaní s lineárnou regresiou.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/vsicko.png}
+    \caption{Porovnanie výkonnosti predikcií počtu prejazdov na jednotlivých cyklocestách.}
+    \label{obr1.5}
+\end{figure}
+
+Je možné pozorovať pibližne rovnaké usporiadanie priemerných percentuálnych odchýlok pre jednotlivé cyklotrasy. Konkrétny trend nižšej priemernej odchýlky pre centrálnejšie trasy
+sa preukázal aj pri regularizačných algoritmoch. Pozoruhodné je avšak správanie pre trasy \textbf{Devínska cesta} a \textbf{Vajnorská}, kde oba typy regularizácie dosiahli obzvlášť
+vysokú odchýlku. Za spomenutie stojí aj to, že v drvivej väčšine trás je miera odchýlok vo všetkých troch algoritmoch veľmi podobná.
+\newline
+\par
+
+Záverom je možné konštatovať viacero záverov. Prístupom trénovania nepenalizovanej, resp. prenalizovanej, regresie sa preukázala istá prepojenosť počasia na cyklotrasy skôr 
+v rámci centra mesta. Tu sa avšak preukázalo, že tento prístup nemusí byť nutne korektný z dôvodu absencie porovnateľne veľkého a rôznorodého množstva dát pre provinčné cyklotrasy mimo širšieho centra mesta,
+v ktorých sme na Obrázku \ref{obr1.2} preukázali koncentrickosť cez víkendy. Tým sa ukázalo, že takéto porovnávanie nie je nutne korektné, keďže samotná distribúcia dát v rámci jednotlivých dní nie je vyrovnaná.
+\newline
+\par
+Z toho dôvodu bol kladený dôraz na hlbšiu analýzu vplyvu počasia po jednotlivých metrikách počasia, ktoré môžu mať pravdepodobne vyšší vplyv na zmeny v správaní cyklostov. Preukázali sme, že vplyvom dažďových zrážok a teploty nad, resp. pod, hranicou $20 ^\circ C$. Je možné pozorovať
+vyšší pokles, resp. nárast priemerného počtu prejazdov trasou na trasách provinčných – napr. \textbf{Devínska cesta}, \textbf{Hrádza - Berg}, \textbf{Cyklomost Slobody} a i. Čím sme aspoň čiastočne načrtli alebo skôr odokryli viaceré ďalšie možné smery výskumu, toho, že trasy, nachádzajúce sa ďalej od mestskej zástavby,
+majú v istej miere vyššie previazanie na počasie, ako tie v rámci centra mesta. 
+
+
+\chapter{Nejaká ďalšia kapitola}
 
 \end{document}
