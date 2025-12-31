@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2025.12.31)  31 DEC 2025 12:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2025.12.31)  31 DEC 2025 14:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/kubko/Documents/School/R_3/PRIDAV/PRIDAV-JPD/PRIDAV-JPD/Report/report.tex
-(c:/Users/kubko/Documents/School/R_3/PRIDAV/PRIDAV-JPD/PRIDAV-JPD/Report/report.tex
+**c:/Users/kubko/Documents/School/R_3/PRIDAV/PRIDAV-JPD/Report/report.tex
+(c:/Users/kubko/Documents/School/R_3/PRIDAV/PRIDAV-JPD/Report/report.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Users\kubko\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -418,24 +418,24 @@ Package hyperref Info: Link coloring ON on input line 28.
 \openout2 = `chapters/uvod.aux'.
 
  (chapters/uvod.tex
-Underfull \hbox (badness 10000) in paragraph at lines 4--9
+Underfull \hbox (badness 10000) in paragraph at lines 5--10
 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
 (C:\Users\kubko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
  (C:\Users\kubko\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 10--15
+Underfull \hbox (badness 10000) in paragraph at lines 11--16
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--20
+Underfull \hbox (badness 10000) in paragraph at lines 17--21
 
  []
 
@@ -443,7 +443,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--20
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.33 \tableofcontents
+l.34 \tableofcontents
                       [1
 
 
@@ -503,7 +503,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--57
 
  []
 
-<images/LR_mae.png, id=63, 455.301pt x 339.669pt>
+<images/LR_mae.png, id=67, 455.301pt x 339.669pt>
 File: images/LR_mae.png Graphic file (type png)
 <use images/LR_mae.png>
 Package pdftex.def Info: images/LR_mae.png  used on input line 62.
@@ -518,7 +518,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--77
 
  []
 
-<images/comparison.png, id=76, 615.0177pt x 269.5671pt>
+<images/comparison.png, id=80, 615.0177pt x 269.5671pt>
 File: images/comparison.png Graphic file (type png)
 <use images/comparison.png>
 Package pdftex.def Info: images/comparison.png  used on input line 84.
@@ -534,7 +534,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.1.2}) h
                                                   \__shipout_drop_firstpage_...
 l.94 
       <./images/comparison.png>]
-<images/comparison_t.png, id=84, 615.0177pt x 269.5671pt>
+<images/comparison_t.png, id=88, 615.0177pt x 269.5671pt>
 File: images/comparison_t.png Graphic file (type png)
 <use images/comparison_t.png>
 Package pdftex.def Info: images/comparison_t.png  used on input line 97.
@@ -544,7 +544,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--106
 
  []
 
-<images/comparison_rain.png, id=86, 615.0177pt x 269.5671pt>
+<images/comparison_rain.png, id=90, 615.0177pt x 269.5671pt>
 File: images/comparison_rain.png Graphic file (type png)
 <use images/comparison_rain.png>
 Package pdftex.def Info: images/comparison_rain.png  used on input line 112.
@@ -569,7 +569,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 128--132
 
  []
 
-<images/vsicko.png, id=99, 455.301pt x 339.669pt>
+<images/vsicko.png, id=103, 455.301pt x 339.669pt>
 File: images/vsicko.png Graphic file (type png)
 <use images/vsicko.png>
 Package pdftex.def Info: images/vsicko.png  used on input line 137.
@@ -601,20 +601,20 @@ LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 88AFED9645E93871112E6324E964E380;1294.
+(rerunfilecheck)             Checksum: 86E08145119C37792043EC8813C41A42;1361.
  ) 
 Here is how much of TeX's memory you used:
- 12294 strings out of 467871
- 192354 string characters out of 5418375
- 616113 words of memory out of 5000000
- 40968 multiletter control sequences out of 15000+600000
+ 12295 strings out of 467871
+ 192179 string characters out of 5418375
+ 615113 words of memory out of 5000000
+ 40969 multiletter control sequences out of 15000+600000
  635745 words of font info for 59 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,79p,499b,532s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,488b,532s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi720\csbx12.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi1037\csbx12.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi600\csbx9.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi600\csbx10.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi600\csti10.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi600\csr10.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi720\csr12.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi600\csr17.pk> <C:\Users\kubko\AppData\Local\MiKTeX\fonts/pk/ljfour/public/csfonts/dpi1244\csbx12.pk><C:/Users/kubko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/kubko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/kubko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/kubko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/kubko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/kubko/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on report.pdf (10 pages, 321322 bytes).
+Output written on report.pdf (10 pages, 322151 bytes).
 PDF statistics:
- 486 PDF objects out of 1000 (max. 8388607)
+ 491 PDF objects out of 1000 (max. 8388607)
  23 named destinations out of 1000 (max. 500000)
- 74 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 
