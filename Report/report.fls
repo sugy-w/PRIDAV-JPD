@@ -1,6 +1,6 @@
-PWD c:\Users\kubko\Documents\School\R_3\PRIDAV\PRIDAV-JPD\PRIDAV-JPD\Report
+PWD c:\Users\kubko\Documents\School\R_3\PRIDAV\PRIDAV-JPD\Report
 INPUT C:\Users\kubko\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\kubko\Documents\School\R_3\PRIDAV\PRIDAV-JPD\PRIDAV-JPD\Report\report.tex
+INPUT c:\Users\kubko\Documents\School\R_3\PRIDAV\PRIDAV-JPD\Report\report.tex
 OUTPUT report.log
 INPUT C:\Users\kubko\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
 INPUT C:\Users\kubko\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
