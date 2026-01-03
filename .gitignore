@@ -1,7 +1,7 @@
-/Report/*.gz
-/Report/*.log
-/Report/*.aux
-/Report/*.toc
-/Report/*.out
-/Report/*.fls
-/Report/*.fdb_latexmk
+*.gz
+*.log
+*.aux
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
