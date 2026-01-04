@@ -144,6 +144,19 @@ sa preukázal aj pri regularizačných algoritmoch. Pozoruhodné je však správ
 vysokú odchýlku. Za spomenutie stojí aj to, že v drvivej väčšine trás je miera odchýlok vo všetkých troch algoritmoch veľmi podobná.
 \newline
 \par
+Prirodzenou voľbou oproti lineárnej regresii sa javí algoritmus založený na nelineárnej regresii. Pre účely tohto projektu bol v menšej miere využitý aj algoritmus \texttt{Random Forest Regressor}, avšak 
+v relatívne obmedzenej forme – bez špecificky sofistikovaného tunovania všetkých jeho možných parametrov. Preukazuje sa, že úrovne odchýlok nie sú významne odlišné, resp. lepšie, než pri algoritmoch 
+lineárnej regresie. Úrovne odchýlok pre jednotlivé cyklotrasy sú znázornené na Obrázku \ref{obr1.6}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/les_dev.png}
+    \caption{Výkonnosť predikcii pomocou \texttt{RandomForestRegression} na jednotlivých cyklotrasách.}
+    \label{obr1.6}
+\end{figure}
+Je možné pozorovať relatívne obdobné usporiadanie úspešností regresie ako na Obrázku \ref{obr1.5}. Akési rozdelenie provinčných a centrálnych cyklotrás v jednotlivých poloviciach je taktiež pomerne zjavné. 
+\newline
+\par
 Záverom je možné konštatovať viacero záverov. Prístupom trénovania nepenalizovanej, resp. penalizovanej, regresie sa preukázala istá prepojenosť počasia na cyklotrasy skôr 
 v rámci centra mesta. Tu sa však preukázalo, že tento prístup nemusí byť nutne korektný z dôvodu absencie porovnateľne veľkého a rôznorodého množstva dát pre provinčné cyklotrasy mimo širšieho centra mesta,
 v ktorých sme na Obrázku \ref{obr1.2} preukázali koncentrickosť cez víkendy. Tým sa ukázalo, že takéto porovnávanie nie je nutne korektné, keďže samotná distribúcia dát v rámci jednotlivých dní nie je vyrovnaná.
