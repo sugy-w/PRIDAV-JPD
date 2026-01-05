@@ -1,7 +1,0 @@
-\babel@toc {slovak}{}\relax 
-\contentsline {chapter}{\numberline {1}Spojitosť vyťaženia cyklotrás a počasia \\ \small Marek Šugár}{3}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Predspracovanie dát}{3}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Lineárna regresia}{4}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Interpretácia výsledkov}{5}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Penalizované lineárne regresie (LASSO, RIDGE)}{7}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Nejaká ďalšia kapitola}{9}{chapter.2}%
