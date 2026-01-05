@@ -1,0 +1,181 @@
+\chapter[Analýza vplyvu novej cyklotrasy na Vajanského nábreží \\ \small Tuan Dávid Nguyen Van]{Analýza vplyvu novej cyklotrasy na Vajanského nábreží}
+
+V tejto kapitole budeme analyzovať vplyv cyklotrasy na Vajanského nábreží v Bratislave, ktorá bola otvorená 1. septembra 2023.
+Táto trasa spája mestské centrum s rekreačnými oblasťami a zároveň poskytuje alternatívnu cesty pre dochádzajúcich cyklistov.
+
+Cieľom tejto kapitoly je kvantifikovať kauzálny vplyv otvorenia cyklotrasy na Vajanského nábreží na intenzitu cyklistickej 
+dopravy a identifikovať charakter jej využitia. Konkrétne sa zameriavame na odpovede na nasledujúce výskumné otázky: Viedlo 
+otvorenie cyklotrasy k štatisticky signifikantnému nárastu počtu cyklistov? Aký je časový profil tohto vplyvu? Jedná sa o okamžitý 
+skok alebo postupný nárast? Aké sú charakteristiky využitia novej trasy v porovnaní s typickými dochádzkovými a rekreačnými trasami v meste?
+
+\section{Dáta}
+
+Na cyklotrase na Vajanského nábreží sú nainštalované dva paralelné sčítače (Vajanského 1 a Vajanského 2). 
+Keďže tieto sčítače monitorujú tú istú infraštruktúru, ich hodnoty boli v každom časovom okamihu sčítané a ďalej analyzované ako jedna trasa „Vajanského“.
+Sčítače na Vajanského nábreží poskytujú dáta až od konca januára 2024. Do osadenia nových sčítačiek na Vajanského 
+mesto vychádzalo z čísel cyklosčítačiek pri River Parku. Pre zachytenie vývoja cyklistickej dopravy pred 
+týmto obdobím bola využitá lokalita River Park, ktorá sa nachádza v bezprostrednej blízkosti analyzovanej trasy a vykazuje 
+dlhodobú dostupnosť dát už od roku 2022. 
+
+Na porovnanie správania cyklistov na rôznych typoch trás boli do analýzy zahrnuté aj ďalšie dve lokality:
+\textbf{Páričkova}, reprezentujúca predovšetkým dochádzkovú cyklistickú dopravu a \textbf{Viedenská}, reprezentujúca rekreačnú cyklistickú trasu.
+Meteorologické dáta boli získané zo služby Meteostat pre lokalitu Bratislava. Použité premenné zahŕňajú priemernú dennú teplotu, úhrn zrážok a priemernú 
+rýchlosť vetra.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/trasy.png}
+    \caption{Cyklotrasy}
+    \label{obr2.1}
+\end{figure}
+
+\subsection{Čistenie a príprava dát}
+Pôvodné dáta zo sčítačov sú dostupné v hodinových intervaloch a rozlišujú smer jazdy.
+Pre každý záznam bol preto najskôr vypočítaný celkový počet cyklistov ako súčet prejazdov v oboch smeroch.
+Následne boli dáta agregované na dennú úroveň, čo umožňuje eliminovať krátkodobé fluktuácie v rámci dňa
+a zároveň zabezpečuje kompatibilitu s dennými meteorologickými údajmi.
+
+V prípade Vajanského nábrežia boli dáta z oboch paralelných sčítačov transformované do spoločného časového formátu
+a následne sčítané, čím vznikol jednotný denný časový rad reprezentujúci intenzitu cyklistickej dopravy na tejto trase.
+Keďže sčítače na Vajanského nábreží sú dostupné až od konca januára 2024, pre obdobie pred ich inštaláciou
+bol ako referenčná lokalita použitý sčítač River Park.
+Denné dáta z River Parku boli použité výlučne do momentu, keď sa začínajú objavovať dáta zo sčítačov na Vajanského nábreží,
+aby sa predišlo prekrývaniu rôznych zdrojov merania.
+
+Takto skonštruovaný časový rad umožňuje analyzovať vývoj cyklistickej dopravy na Vajanského nábreží
+v dlhšom časovom horizonte, pričom zmena meracej lokality nevedie k diskontinuite v dátach.
+Predpokladom tohto prístupu je, že River Park a Vajanského nábrežie zachytávajú podobné dopravné vzorce,
+keďže ide o priestorovo blízke úseky tej istej dopravnej osi.
+
+Dátum otvorenia cyklotrasy na Vajanského nábreží bol stanovený na 1. september 2023.
+Na identifikáciu potenciálneho vplyvu tejto udalosti bola vytvorená binárna premenná,
+ktorá nadobúda hodnotu 1 v období po otvorení cyklotrasy a 0 v období pred ním.
+Okrem toho bola skonštruovaná trendová premenná vyjadrujúca počet dní od otvorenia cyklotrasy,
+ktorá umožňuje zachytiť postupnú adaptáciu cyklistov na novú infraštruktúru.
+
+Meteorologické údaje boli časovo zosúladené s cyklistickými dátami na dennej báze
+a spojené pomocou dátumu.
+Do výsledného datasetu boli zahrnuté priemerná denná teplota, úhrn zrážok a priemerná rýchlosť vetra,
+ktoré predstavujú kľúčové faktory ovplyvňujúce rozhodnutie o využití bicykla.
+
+Na kontrolu rozdielov medzi pracovnými dňami a víkendmi bola vytvorená binárna premenná,
+ktorá nadobúda hodnotu 1 pre soboty a nedele a 0 pre pracovné dni.
+Táto premenná umožňuje oddeliť rekreačné cyklistické správanie od každodennej dochádzky.
+
+Výsledkom procesu čistenia a prípravy dát je konzistentný denný časový rad,
+ktorý kombinuje dáta z viacerých sčítačov, explicitne zohľadňuje otvorenie cyklotrasy
+a zároveň kontroluje vplyv základných meteorologických a kalendárnych faktorov.
+
+\section{Regresný model}
+
+Analýza bola realizovaná pomocou lineárnych regresných modelov odhadovaných metódou najmenších štvorcov  
+na denných agregovaných dátach. Keďže analyzované dáta majú charakter denného časového radu, nie je splnený 
+predpoklad nezávislosti a konštantného rozptylu rezíduí vyžadovaný klasickým OLS modelom. Pri dátach o 
+cyklistickej doprave možno očakávať autokoreláciu medzi po sebe nasledujúcimi dňami aj rozptyl rezíduí 
+spôsobenú sezónnosťou. Z tohto dôvodu boli použité HAC smerodajné chyby podľa Newey--West, ktoré poskytujú 
+konzistentné odhady aj v prítomnosti autokorelácie a rozptyl neznámeho tvaru. Počet oneskorení 
+bol nastavený na 7 dní, aby zachytil týždenný cyklus v správaní cyklistov.
+
+\subsection{Model pre trasu Vajanského nábrežie}
+Pre trasu Vajanského nábrežie bol použitý model s prerušovaným trendom, ktorého cieľom je zachytiť zmenu 
+vývoja cyklistickej dopravy po otvorení novej cyklistickej infraštruktúry v septembri 2023.
+Model zahŕňa:
+
+\begin{itemize}
+    \item lineárny časový trend (\texttt{days\_since\_start}),
+    \item binárnu premennú indikujúcu obdobie po otvorení cyklotrasy (\texttt{post\_opening}),
+    \item premennú umožňujúcu zmenu sklonu trendu po otvorení (\texttt{days\_after\_opening}),
+    \item meteorologické kontrolné premenné (teplota, zrážky, rýchlosť vetra),
+    \item indikátor víkendových dní,
+    \item mesačné indikátory na kontrolu sezónnosti.
+\end{itemize}
+
+\subsection{Porovnávacie modely pre trasy Páričkova a Viedenská}
+Pre trasy Páričkova (dochádzková trasa) a Viedenská (rekreačná trasa) bol použitý jednoduchší regresný 
+model bez časového trendu a bez intervencie, keďže na týchto trasách nedošlo k porovnateľnej infraštruktúrnej 
+zmene v analyzovanom období.
+
+Vysvetľujúce premenné v týchto modeloch zahŕňajú:
+
+\begin{itemize}
+    \item meteorologické kontrolné premenné (teplota, zrážky, rýchlosť vetra),
+    \item indikátor víkendových dní,
+    \item mesačné indikátory na kontrolu sezónnosti.
+\end{itemize}
+
+Tieto modely slúžia primárne na porovnanie citlivosti rôznych typov cyklistických trás na počasie a sezónnosť, 
+nie na identifikáciu kauzálneho efektu infraštruktúrnej zmeny.
+
+\section{Výsledky}
+Kľúčovým zistením analýzy je štatisticky signifikantný pozitívny efekt premennej \texttt{days\_after\_opening}, 
+zachytávajúcej zmenu trendu po otvorení cyklotrasy. Odhadnutý koeficient tejto premennej dosahuje hodnotu $0.912$ 
+s p-hodnotou $p = 0.039$, čo indikuje, že po otvorení novej infraštruktúry v septembri 2023 sa denný počet cyklistov 
+zvyšuje v priemere o približne jedného cyklistu za každý deň. Tento postupný nárast naznačuje, že cyklisti si novo 
+vybudovanú trasu osvojujú postupne v čase. Kumulatívny efekt tohto postupného nárastu je podstatný, po sto dňoch 
+od otvorenia predstavuje tento trend približne 91 dodatočných cyklistov denne v porovnaní s obdobím bezprostredne po otvorení.
+
+Binárna premenná \texttt{post\_opening}, indikujúca obdobie po otvorení cyklotrasy, vykazuje pozitívny koeficient 
+$181.9$, avšak tento efekt je na hranici štatistickej signifikancie s p-hodnotou $p = 0.079$. Tento výsledok 
+možno interpretovať ako okamžitý nárast využitia bezprostredne po otvorení cyklotrasy, hoci je potrebné pristupovať 
+k tomuto zisteniu s opatrnosťou vzhľadom na marginálnu štatistickú signifikanciu. 
+
+Kombinácia oboch efektov, okamžitého nárastu a postupného trendu, naznačuje, že otvorenie cyklotrasy malo dvojfázový 
+vplyv na cyklistickú dopravu, kde sa počiatočný skok v návštevnosti kombinoval s následným postupným nárastom využitia.
+
+Priemerná denná teplota má na Vajanského nábreží výrazný pozitívny efekt. Zvýšenie teploty o 1~°C je spojené s nárastom 
+približne o 43 cyklistických prejazdov denne, pričom tento efekt je vysoko štatisticky významný. Naopak, zrážky a vietor pôsobia negatívne. 
+Každý milimeter zrážok znižuje denný počet cyklistov približne o 35, zatiaľ čo zvýšenie rýchlosti vetra o 1~m/s vedie k poklesu o približne 
+13 prejazdov denne.
+
+Mesačné indikátory zachytávajú výraznú sezónnosť v cyklistickej doprave. Najvyššia aktivita sa pozoruje v jarných a letných 
+mesiacoch, pričom máj a jún vykazujú najvyššie koeficienty okolo 400 cyklistov v porovnaní s januárom ako referenčným 
+mesiacom. Jesenné a zimné mesiace vykazujú podstatne nižšiu aktivitu, pričom december dokonca vykazuje negatívny koeficient 
+v porovnaní s januárom, hoci tento efekt nie je štatisticky signifikantný.
+
+Zaujímavým špecifikom Vajanského nábrežia je jeho hybridný charakter. Analýza neukázala štatisticky významný rozdiel medzi 
+pracovnými dňami a víkendmi, čo znamená, že trasa je rovnomerne využívaná počas celého týždňa a slúži teda rovnako intenzívne 
+na dochádzanie do práce, ako aj na voľnočasové a rekreačné jazdy.
+
+\subsection{Porovnanie s dochádzkovými a rekreačnými trasami}
+
+Pre kontextualizáciu výsledkov z Vajanského nábrežia boli analyzované aj dve ďalšie trasy s odlišným charakterom využitia: 
+Páričkova ako typická dochádzková trasa a Viedenská ako rekreačná trasa. Tieto porovnávacie analýzy umožňujú lepšie pochopiť 
+špecifiká novej cyklotrasy na Vajanského nábreží.
+
+Kľúčovým rozlišovacím znakom pri modeli pre trasu Páričkova je výrazne negatívny koeficient víkendového indikátora na úrovni 
+$-203.66$, ktorý je vysoko štatisticky signifikantný. Tento pokles o viac než 200 cyklistov počas víkendov v porovnaní s pracovnými 
+dňami predstavuje takmer 60-percentný pokles aktivity a jasne potvrdzuje primárne dochádzkovú funkciu tejto infraštruktúry. 
+V kontraste s týmto výsledkom Vajanského nábrežia nevykazuje štatisticky signifikantný rozdiel medzi pracovnými dňami a víkendmi, 
+čo naznačuje jeho zmiešanú funkciu.
+
+Víkendový indikátor modelu pre Viedenskú trasu má pozitívny koeficient 198.19, ktorý je vysoko štatisticky signifikantný s prakticky nulovou p-hodnotou. 
+Tento nárast takmer 200 cyklistov počas víkendov v porovnaní s pracovnými dňami predstavuje približne 84-percentný nárast oproti 
+baseline úrovni a jednoznačne potvrdzuje rekreačný charakter tejto trasy. Tento výsledok stojí v dokonalom kontraste s Páričkovou, 
+kde víkendy znamenajú pokles aktivity, zatiaľ čo na Viedenskej predstavujú vrchol využitia.
+
+Na Páričkovej koeficient teploty dosahuje hodnotu $22.87$, čo pri baseline úrovni približne 341 cyklistov predstavuje relatívny 
+nárast približne 6.7~\% pri zvýšení teploty o jeden stupeň Celzia. Na Viedenskej je koeficient teploty $33.05$, čo pri baseline 
+úrovni približne 236 cyklistov predstavuje relatívny nárast približne 14~\%. Podobný vzorec 
+sa pozoruje aj pri zrážkach, kde Viedenská vykazuje pokles približne 11~\% na milimeter zrážok, v porovnaní s 5.6~\% na Páričkovej. 
+Rýchlosť vetra má na Viedenskej taktiež výraznejší relatívny vplyv než na dochádzkovej trase.
+
+Vajanského nábrežie vykazuje meteorologickú citlivosť, ktorá sa nachádza medzi týmito dvoma extrémami. Koeficient teploty $42.96$ 
+pri baseline úrovni približne 617 cyklistov predstavuje relatívny nárast približne 7~\%, čo je porovnateľné s dochádzkovými trasami. 
+Táto podobnosť v relatívnych efektoch naznačuje, že hoci Vajanského nábrežie má vyššiu absolútnu baseline úroveň využitia, citlivosť 
+používateľov na poveternostné podmienky je bližšie dochádzkovému než rekreačnému správaniu. V kombinácii s absenciou štatisticky 
+signifikantného víkendového efektu to naznačuje, že trasa slúži predovšetkým pravidelným používateľom, ktorí ju využívajú konzistentne 
+počas celého týždňa.
+
+Sezónne vzorce zachytené mesačnými indikátormi vykazujú na všetkých troch trasách podobný kvalitatívny priebeh s maximom v jarných a 
+letných mesiacoch, hoci s odlišnou intenzitou. Viedenská vykazuje najvýraznejšiu sezónnosť, zatiaľ čo Páričkova a Vajanského nábrežie vykazujú mierne 
+nižšiu sezónnu amplitúdu, čo opäť potvrdzuje, že pravidelní dochádzkoví cyklisti využívajú infraštruktúru počas celého roka, hoci s 
+nižšou intenzitou v zimných mesiacoch.
+
+
+Porovnanie týchto troch lokalít poskytuje dôležitý kontext pre interpretáciu výsledkov z Vajanského nábrežia. Absencia 
+signifikantného víkendového efektu a podobná relatívna citlivosť na meteorologické podmienky ako na dochádzkovej trase 
+Páričkova naznačujú, že Vajanského nábrežie slúži ako hybridná trasa kombinujúca dochádzkovú a rekreačnú funkciu. Táto 
+dualita využitia môže čiastočne vysvetľovať silný pozitívny trend po otvorení cyklotrasy. Nová infraštruktúra priláka 
+nielen dochádzajúcich cyklistov hľadajúcich bezpečnejšiu a príjemnejšiu cestu do práce, ale aj rekreačných cyklistov 
+využívajúcich atraktívne prostredie pozdĺž Dunaja. Schopnosť novej infraštruktúry osloviť obe skupiny používateľov môže 
+byť kľúčovým faktorom jej úspechu a mohla by slúžiť ako model pre budúce projekty cyklistickej infraštruktúry v meste.
