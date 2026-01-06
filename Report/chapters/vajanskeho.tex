@@ -1,7 +1,7 @@
 \chapter[Analýza vplyvu novej cyklotrasy na Vajanského nábreží \\ \small Tuan Dávid Nguyen Van]{Analýza vplyvu novej cyklotrasy na Vajanského nábreží}
 
 V tejto kapitole budeme analyzovať vplyv cyklotrasy na Vajanského nábreží v Bratislave, ktorá bola otvorená 1. septembra 2023.
-Táto trasa spája mestské centrum s rekreačnými oblasťami a zároveň poskytuje alternatívnu cesty pre dochádzajúcich cyklistov.
+Táto trasa spája mestské centrum s rekreačnými oblasťami a zároveň poskytuje alternatívnu cestu pre dochádzajúcich cyklistov.
 
 Cieľom tejto kapitoly je kvantifikovať kauzálny vplyv otvorenia cyklotrasy na Vajanského nábreží na intenzitu cyklistickej 
 dopravy a identifikovať charakter jej využitia. Konkrétne sa zameriavame na odpovede na nasledujúce výskumné otázky: Viedlo 
@@ -12,8 +12,8 @@ skok alebo postupný nárast? Aké sú charakteristiky využitia novej trasy v p
 
 Na cyklotrase na Vajanského nábreží sú nainštalované dva paralelné sčítače (Vajanského 1 a Vajanského 2). 
 Keďže tieto sčítače monitorujú tú istú infraštruktúru, ich hodnoty boli v každom časovom okamihu sčítané a ďalej analyzované ako jedna trasa „Vajanského“.
-Sčítače na Vajanského nábreží poskytujú dáta až od konca januára 2024. Do osadenia nových sčítačiek na Vajanského 
-mesto vychádzalo z čísel cyklosčítačiek pri River Parku. Pre zachytenie vývoja cyklistickej dopravy pred 
+Sčítače na Vajanského nábreží poskytujú dáta až od konca januára 2024. Do osadenia nových sčítačov na Vajanského, 
+mesto vychádzalo z čísel cyklosčítačov pri River Parku. Pre zachytenie vývoja cyklistickej dopravy pred 
 týmto obdobím bola využitá lokalita River Park, ktorá sa nachádza v bezprostrednej blízkosti analyzovanej trasy a vykazuje 
 dlhodobú dostupnosť dát už od roku 2022. 
 
@@ -25,7 +25,7 @@ rýchlosť vetra.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/trasy.png}
-    \caption{Cyklotrasy}
+    \caption{Prehľad analyzovaných cyklotrás}
     \label{obr2.1}
 \end{figure}
 
@@ -38,7 +38,7 @@ a zároveň zabezpečuje kompatibilitu s dennými meteorologickými údajmi.
 V prípade Vajanského nábrežia boli dáta z oboch paralelných sčítačov transformované do spoločného časového formátu
 a následne sčítané, čím vznikol jednotný denný časový rad reprezentujúci intenzitu cyklistickej dopravy na tejto trase.
 Keďže sčítače na Vajanského nábreží sú dostupné až od konca januára 2024, pre obdobie pred ich inštaláciou
-bol ako referenčná lokalita použitý sčítač River Park.
+bol, ako referenčná lokalita, použitý sčítač River Park.
 Denné dáta z River Parku boli použité výlučne do momentu, keď sa začínajú objavovať dáta zo sčítačov na Vajanského nábreží,
 aby sa predišlo prekrývaniu rôznych zdrojov merania.
 
@@ -49,7 +49,7 @@ keďže ide o priestorovo blízke úseky tej istej dopravnej osi.
 
 Dátum otvorenia cyklotrasy na Vajanského nábreží bol stanovený na 1. september 2023.
 Na identifikáciu potenciálneho vplyvu tejto udalosti bola vytvorená binárna premenná,
-ktorá nadobúda hodnotu 1 v období po otvorení cyklotrasy a 0 v období pred ním.
+ktorá nadobúda hodnotu \texttt{1} v období po otvorení cyklotrasy a \texttt{0} v období pred ním.
 Okrem toho bola skonštruovaná trendová premenná vyjadrujúca počet dní od otvorenia cyklotrasy,
 ktorá umožňuje zachytiť postupnú adaptáciu cyklistov na novú infraštruktúru.
 
@@ -59,7 +59,7 @@ Do výsledného datasetu boli zahrnuté priemerná denná teplota, úhrn zrážo
 ktoré predstavujú kľúčové faktory ovplyvňujúce rozhodnutie o využití bicykla.
 
 Na kontrolu rozdielov medzi pracovnými dňami a víkendmi bola vytvorená binárna premenná,
-ktorá nadobúda hodnotu 1 pre soboty a nedele a 0 pre pracovné dni.
+ktorá nadobúda hodnotu \texttt{1} pre soboty a nedele a \texttt{0} pre pracovné dni.
 Táto premenná umožňuje oddeliť rekreačné cyklistické správanie od každodennej dochádzky.
 
 Výsledkom procesu čistenia a prípravy dát je konzistentný denný časový rad,
@@ -68,11 +68,11 @@ a zároveň kontroluje vplyv základných meteorologických a kalendárnych fakt
 
 \section{Regresný model}
 
-Analýza bola realizovaná pomocou lineárnych regresných modelov odhadovaných metódou najmenších štvorcov  
+Analýza bola realizovaná pomocou lineárnych regresných modelov, odhadovaných metódou najmenších štvorcov  
 na denných agregovaných dátach. Keďže analyzované dáta majú charakter denného časového radu, nie je splnený 
 predpoklad nezávislosti a konštantného rozptylu rezíduí vyžadovaný klasickým OLS modelom. Pri dátach o 
 cyklistickej doprave možno očakávať autokoreláciu medzi po sebe nasledujúcimi dňami aj rozptyl rezíduí 
-spôsobenú sezónnosťou. Z tohto dôvodu boli použité HAC smerodajné chyby podľa Newey--West, ktoré poskytujú 
+spôsobený sezónnosťou. Z tohto dôvodu boli použité HAC smerodajné chyby podľa Newey--West, ktoré poskytujú 
 konzistentné odhady aj v prítomnosti autokorelácie a rozptyl neznámeho tvaru. Počet oneskorení 
 bol nastavený na 7 dní, aby zachytil týždenný cyklus v správaní cyklistov.
 
