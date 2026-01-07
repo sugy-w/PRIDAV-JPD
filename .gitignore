@@ -7,3 +7,5 @@
 *.fdb_latexmk
 *.json
 *.pdf
+__pycache__/
+*.pyc
