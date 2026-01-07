@@ -1,0 +1,89 @@
+\chapter[Vyťaženosť cyklostrás v rámci dňa, týždňa, mesiaca, roku \\ \small Lucia Ganajová]{Časová vyťaženosť cyklotrás}
+
+V tejto kapitole sa zameriame na analýzu časovej vyťaženosti cyklotrás z rôznych časových perspektív – počas dňa, týždňa, mesiaca a roka. Cieľom je preskúmať, ako sa intenzita cyklistickej dopravy mení v priebehu týchto časových intervalov a či sú cyklotrasy využívané rovnomerne, alebo či medzi nimi existujú výrazné rozdiely.
+
+\section{Dáta}
+Pre analýzu časovej vyťaženosti sme pôvodné dáta rozšírili o viaceré časové atribúty, ktoré nám umožňujú podrobnejší pohľad na vyťaženosť cyklotrás.
+Medzi pridelenými atribútmi sú:
+\begin{itemize}
+    \item \code{hour} – hodina dňa
+
+    \item \code{dayofweek} – deň v týždni
+
+    \item \code{dayofyear} – poradové číslo dňa v roku
+
+    \item \code{month}, \code{quarter}, \code{year} – pre sledovanie dlhodobejších trendov
+
+    \item \code{is\_weekend} – binárny indikátor víkendu
+
+    \item \code{is\_winter}, \code{is\_summer}, \code{is\_spring}, \code{is\_fall} - indikátory jednotlivých ročných období
+\end{itemize}
+
+Hodina dňa je kľúčová pre analýzu vyťaženosti v rámci jedného dňa, zatiaľ čo atribút \code{is\_weekend} nám pomáha rozlíšiť vzory medzi pracovnými dňami a víkendmi, ktoré sú spravidla odlišné. Ďalšie časové ukazovatele nám umožňujú sledovať sezónne a ročné trendy.
+
+
+\section{Vyťaženosť počas dňa}
+
+Najmenšou sledovanou časovou mierkou je deň, preto začneme touto analýzou. Už na prvý pohľad je na Obrázoku \ref{weekday_vs_weekend_robust}) vidieť výrazný rozdiel medzi vyťaženosťou počas pracovných dní a víkendov. Cez víkendy sa na cyklotrasách bezpochybne nechádza viac cyklistov ako počas týždňa. Ďalším rozdielom je, že počas pracovných dní majú počty cyklistov dva výrazné vrcholy: ráno okolo šiestej hodiny a popoludní okolo šestnástej hodiny, čo naznačuje hlavne dochádzkovú dopravu do práce či školy. Naopak počas víkendov je počet cyklistov všeobecne vyšší a rozložený rovnomernejšie počas celého dňa, čo môže súvisieť s rekreačným využívaním cyklotrás.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/weekend_vs_weekdays_robust.png}
+    \caption{Porovnanie priemernej vyťaženosti cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \label{weekday_vs_weekend_robust}
+\end{figure}
+
+\subsection{Vyťaženosť jednotlivých trás}
+
+Obrázok \ref{weekday_vs_weekend_routes} rozlišuje vyťaženosť podľa jednotlivých cyklotrás počas pracovných dní a víkendov. Väčšina trás vykazuje rovnaký vzor – počas pracovných dní sú využívané najmä na dochádzku do práce či školy. Samozrejme existujú aj výnnimky: Dunajská cyklotrasa alebo Cyklomost Slobody sa nevyznačujú dvoma výraznými vrcholmi počas pracovných dní, čo naznačuje skôr rekreačné využitie, nie dochádzkové. K týmto trasám patrí aj najvyťaženejšia zo všetkých - Dolnozemská cyklotrasa, ktorá je vytažená počas celého týždňa, najmä v popoludňajších hodinách a taktiež počas víkendov, no to počas celého dňa.
+
+Zaujímavé je tiež pozorovanie, že počas pracovných dní je popoludňajší vrchol (okolo šestnástej hodiny) výraznejší než ranný. Hoci by sa mohlo zdať, že viac ľudí používa bicykel na cestu z práce, tento efekt pravdepodobne súvisí s vyšším počtom rekreačných cyklistov, ktorí sa po pracovnom dni venujú pohybu na bicykli.
+
+Na základe dochádzkových vrcholov by sme jednotlivé trasy vedeli klasifikovať na primárne rekreačné a primárne dochádzkové.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/weekend_vs_weekdays_routes.png}
+    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \label{weekday_vs_weekend_routes}
+\end{figure}
+
+
+\subsection{Porovnanie počas zimných a letných dní}
+Výrazné rozdiely možno pozorovať aj pri porovnaní zimnej a letnej sezóny. V zime je počet cyklistov výrazne nižší, čo súvisí s nepriaznivými poveternostnými podmienkami, nižšími teplotami a často aj s horším stavom ciest a chodníkov. Dáta ukazujú, že v zime sú 2 vrcholy vyťaženosti počas pracovného týždňa bližšie pri sebe, čo bude pravdepodobne dôsledkom kratších dní. Počas výkendov, počet cyklistov narastá s hodinou dňa a po trinástej hodine začína klesať, pričom po dvadsiatej hodine na cyklotrasách nestretneme takmer žiadneho cyklistu.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/summer_winter.png}
+    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \label{winter_vs_summer}
+\end{figure}
+
+%summer/winter ratio
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/summer_winter_routes.png}
+    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \label{winter_vs_summer_routes}
+\end{figure}
+
+\section{Vyťaženosť počas jednotlivých mesiacov}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/seasonality_by_month.png}
+    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \label{seasinality_by_month}
+\end{figure}
+
+
+\section{Prediktívny model}
+
+
+
+
+
