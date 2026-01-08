@@ -3,6 +3,7 @@
 V tejto kapitole sa zameriame na analýzu časovej vyťaženosti cyklotrás z rôznych časových perspektív – počas dňa, týždňa, mesiaca a roka. Cieľom je preskúmať, ako sa intenzita cyklistickej dopravy mení v priebehu týchto časových intervalov a či sú cyklotrasy využívané rovnomerne, alebo či medzi nimi existujú výrazné rozdiely.
 
 \section{Dáta}
+
 Pre analýzu časovej vyťaženosti sme pôvodné dáta rozšírili o viaceré časové atribúty, ktoré nám umožňujú podrobnejší pohľad na vyťaženosť cyklotrás.
 Medzi pridelenými atribútmi sú:
 \begin{itemize}
@@ -24,7 +25,7 @@ Hodina dňa je kľúčová pre analýzu vyťaženosti v rámci jedného dňa, za
 
 \section{Vyťaženosť počas dňa}
 
-Najmenšou sledovanou časovou mierkou je deň, preto začneme touto analýzou. Už na prvý pohľad je na Obrázoku \ref{weekday_vs_weekend_robust}) vidieť výrazný rozdiel medzi vyťaženosťou počas pracovných dní a víkendov. Cez víkendy sa na cyklotrasách bezpochybne nechádza viac cyklistov ako počas týždňa. Ďalším rozdielom je, že počas pracovných dní majú počty cyklistov dva výrazné vrcholy: ráno okolo šiestej hodiny a popoludní okolo šestnástej hodiny, čo naznačuje hlavne dochádzkovú dopravu do práce či školy. Naopak počas víkendov je počet cyklistov všeobecne vyšší a rozložený rovnomernejšie počas celého dňa, čo môže súvisieť s rekreačným využívaním cyklotrás.
+Najmenšou sledovanou časovou mierkou je deň, preto začneme touto analýzou. Už na prvý pohľad je na Obrázoku \ref{weekday_vs_weekend_robust} vidieť výrazný rozdiel medzi vyťaženosťou počas pracovných dní a víkendov. Cez víkendy sa na cyklotrasách bezpochybne nechádza viac cyklistov ako počas týždňa. Ďalším rozdielom je, že počas pracovných dní majú počty cyklistov dva výrazné vrcholy: ráno okolo šiestej hodiny a popoludní okolo šestnástej hodiny, čo naznačuje hlavne dochádzkovú dopravu do práce či školy. Naopak počas víkendov je počet cyklistov všeobecne vyšší a rozložený rovnomernejšie počas celého dňa, čo môže súvisieť s rekreačným využívaním cyklotrás.
 
 \begin{figure}[H]
     \centering
@@ -35,12 +36,11 @@ Najmenšou sledovanou časovou mierkou je deň, preto začneme touto analýzou. 
 
 \subsection{Vyťaženosť jednotlivých trás}
 
-Obrázok \ref{weekday_vs_weekend_routes} rozlišuje vyťaženosť podľa jednotlivých cyklotrás počas pracovných dní a víkendov. Väčšina trás vykazuje rovnaký vzor – počas pracovných dní sú využívané najmä na dochádzku do práce či školy. Samozrejme existujú aj výnnimky: Dunajská cyklotrasa alebo Cyklomost Slobody sa nevyznačujú dvoma výraznými vrcholmi počas pracovných dní, čo naznačuje skôr rekreačné využitie, nie dochádzkové. K týmto trasám patrí aj najvyťaženejšia zo všetkých - Dolnozemská cyklotrasa, ktorá je vytažená počas celého týždňa, najmä v popoludňajších hodinách a taktiež počas víkendov, no to počas celého dňa.
+Obrázok \ref{weekday_vs_weekend_routes} rozlišuje vyťaženosť podľa jednotlivých cyklotrás počas pracovných dní a víkendov. Väčšina trás vykazuje rovnaký vzor – počas pracovných dní sú využívané najmä na dochádzku do práce či školy. Samozrejme existujú aj výnimky: Dunajská cyklotrasa alebo Cyklomost Slobody sa nevyznačujú dvoma výraznými vrcholmi počas pracovných dní, čo naznačuje skôr rekreačné využitie, nie dochádzkové. K týmto trasám patrí aj najvyťaženejšia zo všetkých - Dolnozemská cyklotrasa, ktorá je vytažená počas celého týždňa, najmä v popoludňajších hodinách a taktiež počas víkendov, no to počas celého dňa.
 
 Zaujímavé je tiež pozorovanie, že počas pracovných dní je popoludňajší vrchol (okolo šestnástej hodiny) výraznejší než ranný. Hoci by sa mohlo zdať, že viac ľudí používa bicykel na cestu z práce, tento efekt pravdepodobne súvisí s vyšším počtom rekreačných cyklistov, ktorí sa po pracovnom dni venujú pohybu na bicykli.
 
 Na základe dochádzkových vrcholov by sme jednotlivé trasy vedeli klasifikovať na primárne rekreačné a primárne dochádzkové.
-
 
 
 \begin{figure}[H]
@@ -52,37 +52,95 @@ Na základe dochádzkových vrcholov by sme jednotlivé trasy vedeli klasifikova
 
 
 \subsection{Porovnanie počas zimných a letných dní}
-Výrazné rozdiely možno pozorovať aj pri porovnaní zimnej a letnej sezóny. V zime je počet cyklistov výrazne nižší, čo súvisí s nepriaznivými poveternostnými podmienkami, nižšími teplotami a často aj s horším stavom ciest a chodníkov. Dáta ukazujú, že v zime sú 2 vrcholy vyťaženosti počas pracovného týždňa bližšie pri sebe, čo bude pravdepodobne dôsledkom kratších dní. Počas výkendov, počet cyklistov narastá s hodinou dňa a po trinástej hodine začína klesať, pričom po dvadsiatej hodine na cyklotrasách nestretneme takmer žiadneho cyklistu.
+Výrazné rozdiely možno pozorovať aj pri porovnaní zimnej a letnej sezóny. V zime je počet cyklistov výrazne nižší, čo súvisí s nepriaznivými poveternostnými podmienkami, nižšími teplotami a často aj s horším stavom ciest a chodníkov. Dáta ukazujú, že v zime sú 2 vrcholy vyťaženosti počas pracovného týždňa bližšie pri sebe, čo bude pravdepodobne dôsledkom kratších dní.
+
+Počas víkendov sa počet cyklistov v zimnom období postupne zvyšuje s pribúdajúcimi hodinami dňa, pričom po približne trinástej hodine začína klesať. Po dvadsiatej hodine sa na cyklotrasách vyskytuje už len zanedbateľný počet cyklistov. V letnom období je naopak vyťaženosť vyššia počas celého dňa, s výraznejšími vrcholmi najmä v popoludňajších a večerných hodinách.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/summer_winter.png}
-    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \caption{Porovnanie priemernej vyťaženosti cyklotrás v rámci dňa počas pracovných dní a víkendu v zime aj v lete.}
     \label{winter_vs_summer}
 \end{figure}
 
-%summer/winter ratio
+Pre jednotlivé trasy sme vypočítali aj tzv.\ \textbf{summer--winter ratio}, ktoré vyjadruje pomer priemerného počtu cyklistov v letných a zimných mesiacoch a poskytuje tak kvantitatívnu mieru sezónnosti. Trasy Hrádza Berg, Devínska Nová Ves a Cyklomost Slobody sa ukázali ako lokality s najvýraznejším rozdielom medzi zimnou a letnou sezónou. Tento jav možno pripísať ich prevažne rekreačnému charakteru, v dôsledku čoho sú intenzívnejšie využívané najmä počas teplejších mesiacov.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{images/summer_winter_routes.png}
-    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
-    \label{winter_vs_summer_routes}
-\end{figure}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=0.9\linewidth]{images/summer_winter_routes.png}
+%     \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu v zime aj v lete}
+%     \label{winter_vs_summer_routes}
+% \end{figure}
 
 \section{Vyťaženosť počas jednotlivých mesiacov}
+
+Výsledky analýzy priemernej vyťaženosti cyklotrás v jednotlivých mesiacoch zodpovedajú očakávaným sezónnym trendom. Počet cyklistov sa zvyšuje v mesiacoch s vyššími dennými teplotami a naopak klesá počas zimného obdobia. Najvyššiu vyťaženosť dosahujú cyklotrasy v letných mesiacoch, pričom maximum je zaznamenané najmä v mesiaci jún. Hodnoty vyťaženosti počas letnej sezóny sú však pomerne rovnomerne rozložené. Naopak, najnižšia vyťaženosť je pozorovaná v januári.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\linewidth]{images/seasonality_by_month.png}
-    \caption{Porovnanie priemernej vyťaženosti jednotlivých cyklotrás v rámci dňa počas pracovných dní a víkendu.}
+    \caption{Porovnanie priemernej vyťaženosti cyklotrás počas štyroch ročných období.}
     \label{seasinality_by_month}
 \end{figure}
+
+Na porovnanie sezónnosti jednotlivých cyklotrás sme vypočítali sezónnu variabilitu vyjadrenú \textbf{koeficientom variability}
+\[
+    CV = \frac{\text{smerodajná odchýlka}}{\text{priemer}}.
+\]
+Poradie cyklotrás podľa tejto metriky sa výrazne nelíši od výsledkov získaných pomocou \textit{summer--winter ratio}. Najvyššie hodnoty sezónnej variability opäť dosahujú rovnaké tri cyklotrasy, čo potvrdzuje konzistentnosť oboch prístupov pri hodnotení sezónnych rozdielov.
 
 
 \section{Prediktívny model}
 
+\subsection{Dáta}
+Použité dáta sa oproti analýze časovej vyťaženosti výrazne neodlišujú. Jedinou zmenou je úprava reprezentácie atribútu \code{dayofweek}, ktorý bol pôvodne vyjadrený ako celé číslo na škále $0$–$6$.
 
+Pri metódach strojového učenia však takáto reprezentácia cyklických dát vytvára umelú diskontinuitu medzi nedeľou a pondelkom, hoci tieto dni v týždni na seba bezprostredne nadväzujú. Z tohto dôvodu sme atribút \code{dayofweek} nahradili cyklickou reprezentáciou dňa v týždni pomocou trigonometrického enkódovania. Konkrétne boli vytvorené dva nové atribúty: \code{dayofweek\_sin} a \code{dayofweek\_cos}, ktoré umožňujú zachytiť cyklický charakter dní v týždni.
+
+Na rozdiel od experimentu v Kapitole \ref{chapter:pocasie} sme sa rozhodli zahrnúť aj dáta z obdobia pred a počas pandémie ochorenia COVID-19. Keďže ide o úlohu modelovania časových radov, tri roky dát (od roku 2022) nie sú postačujúce na spoľahlivé natrénovanie a vyhodnotenie modelu. Keďže aj napriek tomu sú niektoré cyklotrasy otvorené až od neskorších rokov, môžeme očakávať aj veľmi nepresné predikcie, spôsobené malým množstvom trénovacích dát, na ktorých sa model nestihol dostatočne naučiť všetky vlastnosti a zachytiť sezonalitu dát.
+
+\subsection{Použitý model - XGBoost}
+Na modelovanie vyťaženosti cyklotrás bol zvolený model XGBoost (Extreme Gradient Boosting), ktorý patrí medzi ensemble metódy založené na rozhodovacích stromoch. XGBoost využíva princíp gradientného boostingu, pri ktorom sa model skladá z postupne trénovaných stromov, pričom každý ďalší strom sa snaží korigovať chyby predchádzajúcich modelov.
+
+Rozhodovacie stromy sú síce flexibilné a dobre interpretovateľné, no často trpia problémom preučenia. XGBoost tento problém zmierňuje zavedením regularizácie, ako aj mechanizmov ako \textit{early stopping}, ktoré umožňujú zastaviť trénovanie v momente, keď sa výkonnosť modelu na validačných dátach prestane zlepšovať.
+
+Vďaka týmto vlastnostiam je XGBoost vhodný pre modelovanie komplexných nelineárnych vzťahov v časových a sezónnych dátach, akými sú aj dáta o vyťaženosti cyklotrás.
+
+
+\subsection{Výsledky}
+
+Výsledky modelu sú znázornené na Obrázku \ref{xgboost}, kde je pre každú cyklotrasu uvedená hodnota relatívneho MAE. Zároveň je v grafe zobrazené aj časové rozpätie dát, z ktorých bol model pre jednotlivé trasy trénovaný a validovaný.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/XGBoost_results.png}
+    \caption{Výsledky modelu XGBoost na testovacej množine.}
+    \label{xgboost}
+\end{figure}
+
+Z výsledkov môžeme pozorovať niekoľko zaujímavých skutočností.
+
+Po prvé, intuitívne by sme očakávali, že cyklotrasy s kratším časovým radom budú dosahovať vyššie hodnoty relatívneho MAE z dôvodu menšieho množstva trénovacích dát. Tento predpoklad sa však nepotvrdzuje vo všetkých prípadoch. Pri detailnejšom pohľade na časovú vyťaženosť jednotlivých trás zistíme, že cyklotrasa \textit{Páričkova}, ktorá dosahuje najlepšie skóre, je síce trénovaná na relatívne malom objeme dát, avšak jej vyťaženosť má veľmi pravidelný a stabilný denný profil. Naopak, trasa \textit{Devínska cesta}, ktorá obsahuje dáta z porovnateľného časového obdobia, vykazuje najhoršie výsledky. Tento jav je spôsobený výraznou nepravidelnosťou dát, vysokými výkyvmi v počte cyklistov a obdobiami s nulovou alebo takmer nulovou vyťaženosťou.
+
+Po druhé, je potrebné pozastaviť sa pri použitej hodnotiacej metrike – relatívnom MAE. Táto metrika vyjadruje veľkosť chyby modelu v percentách vzhľadom na priemernú hodnotu cieľovej premennej. V niektorých prípadoch však môže pôsobiť zavádzajúco. Ak je priemerný počet cyklistov na trase veľmi nízky alebo sa blíži k nule, aj malá absolútna chyba môže viesť k extrémne vysokým hodnotám relatívneho MAE.
+
+V analyzovaných dátach sme však nezaznamenali výraznú koreláciu medzi vysokými hodnotami relatívneho MAE a nízkym priemerným počtom cyklistov. Vo väčšine prípadov sú vysoké hodnoty tejto metriky spôsobené najmä nepravidelnosťou časových radov a slabou opakovateľnosťou vzorcov v dátach.
+
+\subsubsection{Dôležitosť atribútov}
+
+V tejto časti sme analyzovali atribúty, ktoré model XGBoost považoval pri predikcii za kľúčové. Na obrázku \ref{feature_importance} je znázornená normalizovaná dôležitosť jednotlivých príznakov pre každú trasu, čo umožňuje ich vzájomné porovnanie.
+
+Z výsledkov je zrejmé, že tri lokality sa výrazne odlišujú od ostatných: Incheba Einsteinova, Trenčianska a Dunajská/Lazaretská. V týchto prípadoch nemá atribút \texttt{is\_winter} takmer žiadnu váhu. Pri bližšej analýze vstupných dát zisťujeme, že tento jav je spôsobený dĺžkou dostupných časových radov – pre tieto trasy disponujeme údajmi až z roku 2025. Keďže trénovacia a validačná množina pre tieto senzory nepokrývala zimné mesiace v dostatočnej miere, model nedokázal zachytiť sezónny trend spojený so zimou. V dôsledku toho sa algoritmus pri predikcii spolieha primárne na atribút \texttt{hour} (hodina dňa), ktorý vykazuje stabilnú dennú periodicitu nezávislú od ročného obdobia.
+
+Naopak, pri trasách s dlhšou históriou, ako sú Cyklomost Slobody či Viedenská, vidíme vysokú dôležitosť atribútu \texttt{is\_winter} v kombinácii s \texttt{is\_summer} a \code{hour}. To potvrdzuje predpoklad, že cyklistická doprava v Bratislave je silne sezónna a v zime očakávame výrazný pokles cyklistov. Zaujímavým zistením je aj nízka dôležitosť atribútov \texttt{year} a \texttt{quarter}, čo naznačuje, že medziročná dynamika nárastu počtu cyklistov je menej významná.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/feature_importance_time.png}
+    \caption{Dôležitosť atribútov pri predikcii vyťaženosti cyklotrás.}
+    \label{feature_importance}
+\end{figure}
 
 
 
