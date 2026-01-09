@@ -1,8 +1,83 @@
 \chapter[Klasifikácia cyklotrás na základe vyťaženia {\small Jakub Novotný}]{Klasifikácia cyklotrás na základe vyťaženia}
+Cieľom tejto kapitoly je zistiť, či môžeme určiť konkrétny názov cyklotrasy len na základe toho, ako sa využíva. 
+Každé miesto v Bratislave má svoje vlastnosti – niektoré sú hlavne na dochádzanie do práce 
+(sú tu veľké návaly ráno a poobede počas pracovných dní), iné sú viac na voľný čas (viac ľudí cez víkendy a poobede). 
+V tejto časti použijeme viacero metód strojového učenia, konkrétne logistickú regresiu, náhodné lesy a neurónovú sieť.
+Úspešná klasifikácia by ukázala, že jednotlivé cyklotrasy majú jedinečné a predvídateľné `správanie'.
 
-V tejto kapitole sa budeme zaoberať klasifikáciou cyklotrás na základe ich vyťaženia.
-Cieľom je vytvoriť model, ktorý dokáže predpovedať názov cyklotrasy na základe jej vyťaženia v rôznych časových intervaloch.
-Budeme využívať rôzne klasifikačné algoritmy a porovnávať ich výkonnosť.
+
 \section{Predspracovanie dát}
-Pred samotnou klasifikáciou je potrebné dáta predspracovať. 
-Najprv odstránime nepotrebné stĺpce, ktoré nebudú relevantné pre klasifikáciu.
+Na klasifikáciu sme surové dáta upravili na formát, ktorý môžu použiť všetky použité metódy, vrátane neurónovej sieti. 
+Tento proces mal tieto kroky:
+\begin{itemize}
+    \item \textbf{Agregácia a čistenie}: Dáta sme prepočítali na hodinové intervaly a chýbajúce hodnoty nahradili nulou. 
+    Odstránili sme všetky týždne, kde neboli kompletné záznamy, aby sme predišli skresleniu.
+    \item \textbf{Vytváranie sekvencií}: Dáta sme rozdelili na týždenné úseky (168 hodín). Vstup pre jednu vzorku obsahuje
+    kombináciu oboch smerov jazdy („Z“ a „Do“), čo dáva $168+168$ hodnôt pre každú klasifikovanú vzorku.,
+    \item \textbf{Normalizácia}: Všetky vstupné hodnoty sme štandardizovali pre \textit{logistickú regresiu} a
+    škálovali na interval $[0,1]$ pre \textit{neurónovú sieť}.
+    \item \textbf{Encoding}: Názov cyklotrasy sme najprv očíslovali pomocou \textit{LabelEncoder}
+    a potom previedli na pravdepodobnosti pomocou \textit{to\_categorical} z knižnice \textit{keras}.
+\end{itemize}
+
+\section{Použité modely}
+V tejto časti sme testovali, ako dobre rôzne algoritmy dokážu klasifikovať cyklotrasy. Začali sme jednoduchými modelmi, ktoré spracovávali dáta po jednotlivých záznamoch, a prešli sme k zložitým neurónovým sieťam, ktoré spracovávajú časové rady ako celok.
+
+Na rozdiel od predchádzajúcich kapitol sme tentokrát nezohľadnili počasie, aby sme to zjednodušili. Chceli sme zistiť, či môžeme trasu určiť len na základe vnútorných vzorcov vyťaženosti (hodina, deň, počet cyklistov).
+
+Modely, najmä tie jednoduchšie, sa snažili dosiahnuť úspech tým, že predikovali najčastejšie sa vyskytujúce trasy,
+čo skresľovalo presnosť. Model sa `naučil', že najlepšie je tipovať trasy s najväčším počtom záznamov, preto sme pristúpili k využívaniu \textbf{váhovania tried}.
+
+\subsection{Logistická regresia (základný model)}
+Ako základ sme použili logistickú regresiu. Tento model sme trénovali na pôvodnej štruktúre dát, kde každý riadok bol samostatný záznam.
+Vstupné údaje: ['POCET\_Z', 'POCET\_DO', 'hodina', 'den\_v\_tyzdni', 'mesiac']. Časové údaje sme vzali z dátumu a času.
+
+Model dosiahol nízku presnosť ($19\%$). To značí, že posudzovať jednotlivé hodiny zvlášť nestačí, 
+pretože mnohé trasy majú v určitých hodinách podobný počet cyklistov a ťažko sa dá vyčítať nejaké trendy. 
+Zároveň je na Obrázku \ref{obr:cm_lgr1} možné pozorovať, že model sa skôr naučil početnosti trás, 
+pretože predikoval najčastejšie trasy v dátach, dokonca sa vôbec nesnažil predikovať tie menej vyskytujúce. 
+To nám ukázalo problém nevývaženosti dát, v matici nie je takmer nič na diagonále - tzn. veľmi malú nepresnosť.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/logistic\_regression\_cm1.png}
+    \caption{Matica zámen pre logistickú regresiu bez hodinových okien.}
+    \label{obr:cm_lgr1}
+\end{figure}
+
+\subsection{Random Forest Classifier}
+Aby sme zachytili zložité vzťahy v dátach, použili sme aj algoritmus náhodného lesa. 
+Použili sme rovnaké údaje ako pri logistickej regresii, aby sme mohli porovnať výsledky.
+Síce sa presnosť modelu zvýšila na $29\%$, model stále nedokázal spoľahlivo rozlíšiť medzi trasami, čo ukázalo potrebu prejsť na analýzu časových radov.
+Na Obrázku \ref{obr:cm_rfc1} je možné pozorovať jemnú diagonalizáciu matice zámen, ale stále vidno značné `svetlejšie' vertikálne čiary nad
+\textit{Viedenskou / Hrádzou} (zberané už 11 rokov), zatiaľ čo nad \textit{Einsteinovou} (zberané približne rok) je `tmavo'.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/random\_forest\_cm1.png}
+    \caption{Matica zámen pre náhodné lesy bez hodinových okien.}
+    \label{obr:cm_rfc1}
+\end{figure}
+
+
+
+\subsection{Neurónová sieť (LSTM)}
+V treťom kroku sme prešli na hlboké učenie a využili sme predspracované týždenné okná. Model bol vytvorený pomocou Keras/TensorFlow a obsahoval tieto časti:
+\begin{itemize}
+    \item \textbf{Bidirectional LSTM:} Hlavná časť modelu - učí sa dlhodobé vzťahy v časových radoch a spracováva sekvenciu v oboch smeroch.
+    \item \textbf{Dropout:} Technika, ktorá počas tréningu náhodne vypína niektoré neuróny, aby sme predišli preučeniu a donútili model učiť sa lepšie vzory.
+\end{itemize}
+
+\section{Výsledky klasifikácie a vyhodnotenie}
+Po transformácii dát na týždenné časové okná a natrénovaní modelov sme pristúpili k vyhodnoteniam ich úspešnosti.
+Zatiaľ čo celková presnosť nám poskytuje rýchly prehľad, analýza chybovosti pomocou matice zámen nám pomáha s identifikáciou vzorcov chybovosti. 
+Na nasledujúcom obrázku \ref{obr:cm_lgr2} môžeme pozorovať, ako model klasifikoval jednotlivé testovacie vzorky oproti ich skutočným označeniam.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/neural\_network\_cm.png}
+    \caption{Matica zámen pre neurónovú sieť s hodinovými oknami.}
+    \label{obr:cm_lgr2}
+\end{figure}
+
+Z tejto vizualizácie môžeme mať radosť, pretože `svetlé' štvorčeky sú prevažne na diagonále, čo zn. lepšia presnosť
