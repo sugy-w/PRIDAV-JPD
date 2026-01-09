@@ -5,7 +5,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.utils import class_weight
 
 
-def create_freq_dataset(data):
+def create_weekly_dataset(data):
     X = []
     y = []
     
@@ -91,7 +91,7 @@ def classify(y_train, y_test):
         y=y_train_indices
     )
     class_weights_dict = dict(enumerate(class_weights))
-    return y_train, y_test, class_weights_dict
+    return y_train, y_test, class_weights_dict, class_names
 
 
 def download_link(url):
