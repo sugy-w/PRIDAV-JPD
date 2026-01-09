@@ -5,11 +5,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.utils import class_weight
 
 
-<<<<<<< HEAD
 def create_weekly_dataset(data):
-=======
-def create_freq_dataset(data):
->>>>>>> 55ecc1c67b61bdbd891fde8f5c00be5cfb324cf3
     X = []
     y = []
     
@@ -34,7 +30,7 @@ def create_freq_dataset(data):
                 features = np.concatenate([feat_z, feat_do])
                 
                 X.append(features)
-                y.append(name) # Cieľová premenná (label)
+                y.append(name) # Cieľová premenná (cyklotrasa)
                 
     return np.array(X), np.array(y)
 
@@ -48,31 +44,30 @@ def train_test_split_each_route(X,y, test_size=0.25):
     unikatne_trasy = np.unique(y)
 
     for trasa in unikatne_trasy:
-        # 1. Nájdeme indexy, kde sa nachádza konkrétna trasa
+        # Nájdeme indexy, kde sa nachádza konkrétna trasa
         indexy_trasy = [i for i, x in enumerate(y) if x == trasa]
         
-        # 2. Vyberieme dáta len pre túto trasu
+        # Vyberieme dáta len pre túto trasu
         X_trasa = X[indexy_trasy]
         y_trasa = y[indexy_trasy]
         
-        # 3. Určíme bod rozdelenia (napr. prvých 75% týždňov do tréningu)
+        # bod rozdelenia (napr. prvých test_size% týždňov do tréningu)
         pocet_tyzdnov = len(X_trasa)
         
-        # Ochrana pre veľmi krátke dáta (ak má trasa menej ako 2 týždne, nedá sa deliť)
+        # ak má trasa menej ako 2 týždne, nedá sa deliť
         if pocet_tyzdnov < 2:
             continue 
             
         split_point = int(pocet_tyzdnov * (1  - test_size))
         
-        # 4. Rozdelíme chronologicky
-        # Trénujeme na začiatku roka, testujeme na konci roka - PRE TÚTO TRASU
+        # Trénujeme na začiatkom roka a  testujeme na koncom roka
         X_train_list.append(X_trasa[:split_point])
         X_test_list.append(X_trasa[split_point:])
         
         y_train_list.append(y_trasa[:split_point])
         y_test_list.append(y_trasa[split_point:])
 
-    # 5. Spojíme všetko dokopy do finálnych datasetov
+    # Spojíme všetko dokopy do finálnych datasetov
     X_train = np.concatenate(X_train_list)
     X_test = np.concatenate(X_test_list)
     y_train = np.concatenate(y_train_list)
@@ -95,11 +90,7 @@ def classify(y_train, y_test):
         y=y_train_indices
     )
     class_weights_dict = dict(enumerate(class_weights))
-<<<<<<< HEAD
     return y_train, y_test, class_weights_dict, class_names
-=======
-    return y_train, y_test, class_weights_dict
->>>>>>> 55ecc1c67b61bdbd891fde8f5c00be5cfb324cf3
 
 
 def download_link(url):
