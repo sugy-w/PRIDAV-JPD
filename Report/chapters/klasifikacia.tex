@@ -80,4 +80,89 @@ Na nasledujúcom obrázku \ref{obr:cm_lgr2} môžeme pozorovať, ako model klasi
     \label{obr:cm_lgr2}
 \end{figure}
 
-Z tejto vizualizácie môžeme mať radosť, pretože `svetlé' štvorčeky sú prevažne na diagonále, čo zn. lepšia presnosť
+Z tejto vizualizácie môžeme mať radosť, pretože `svetlé' štvorčeky sú prevažne na diagonále, čo zn. lepšiu presnosť.
+
+Detailnejší pohľad na výkonnosť pre jednotlivé triedy metriky Precision (presnosť), Recall (návratnosť) a F1-skóre. 
+Tieto hodnoty sú kľúčové najmä kvôli spomínanej nevyváženosti datasetu, kde dominantné triedy (trasy s dlhou históriou) môžu skresľovať celkovú úspešnosť.
+
+\begin{table}[H]
+    \centering
+    
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        \textbf{Cyklotrasa} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\ \hline
+        Cyklomost & 97.96 & 53.63 & 69.31 & 179 \\ \hline
+        Devínska Nová Ves & 62.33 & 94.79 & 75.21 & 96 \\ \hline
+        Devínska cesta & 62.69 & 93.33 & 75.00 & 45 \\ \hline
+        Dolnozemská & 97.96 & 92.31 & 95.05 & 52 \\ \hline
+        Dunajská & 88.46 & 52.27 & 65.71 & 44 \\ \hline
+        Einsteinova & 52.63 & 71.43 & 60.61 & 14 \\ \hline
+        Hradza & 73.14 & 73.99 & 73.56 & 173 \\ \hline
+        Most Apollo & 0.00 & 0.00 & 0.00 & 44 \\ \hline
+        Most SNP & 60.34 & 77.78 & 67.96 & 45 \\ \hline
+        Páričkova & 70.69 & 91.11 & 79.61 & 45 \\ \hline
+        River Park & 84.48 & 94.23 & 89.09 & 52 \\ \hline
+        Starý Most & 79.69 & 98.08 & 87.93 & 52 \\ \hline
+        Trenčianska & 73.68 & 100.00 & 84.85 & 14 \\ \hline
+        Vajanského & 92.00 & 76.67 & 83.64 & 30 \\ \hline
+        Vajnorská & 65.08 & 91.11 & 75.93 & 45 \\ \hline
+        Viedenska & 88.59 & 76.30 & 81.99 & 173 \\ \hline
+        Železná studnička & 63.24 & 97.73 & 76.79 & 44 \\ \hline
+        \hline
+        \textbf{accuracy} & & & \textbf{75.59} & 1147 \\ \hline
+        macro avg & 71.35 & 78.52 & 73.07 & 1147 \\ \hline
+        weighted avg & 76.70 & 75.59 & 74.05 & 1147 \\ \hline
+    \end{tabular}
+    \caption{Výsledky klasifikácie pre jednotlivé cyklotrasy neurónovej siete s hodinovými oknami.}
+    \label{tab:cr_nn}
+\end{table}
+
+
+Z tabuľky \ref{tab:cr_nn} môžeme vyčítať, že model dosahuje vysokú úspešnosť pri trasách, ktoré majú špecifický a nezameniteľný profil (napr. výrazné rekreačné špičky cez víkend), 
+zatiaľ čo pri generických mestských trasách s bežnou dochádzkovou špičkou je presnosť nižšia (napr. \textit{Most Apollo}, \textit{Most SNP}, \textit{Einsteinova}).
+
+Pri neurónových sieťach nie je výstupom len jedna trieda, ale vektor pravdepodobností pre všetky možné cyklotrasy. 
+To nám umožnilo analyzovať nielen to, či sa model `trafil', ale aj to, ako blízko bol k pravde v prípade omylu. 
+Vykonali sme analýzu chybne klasifikovaných vzoriek, aby sme zistili, či sa správna odpoveď nachádzala aspoň medzi 2. alebo 3. najpravdepodobnejšou voľbou modelu.
+Celkový počet nesprávnych klasifikácií bol $280$, z tých tá správna odpoveď bola na 2. mieste v $121$ klasifikáciach a na 3. mieste v $65$ klasifikáciach.
+Tento výsledok naznačuje, že aj keď model neurčil presnú lokalitu ako víťaznú, v mnohých prípadoch ju považoval za veľmi pravdepodobnú alternatívu. 
+To potvrdzuje hypotézu, že v Bratislave existujú skupiny cyklotrás s takmer identickými vzorcami správania cyklistov, 
+ktoré je ťažké rozlíšiť len na základe historických dát bez ďalšieho kontextu. 
+
+\section{Analýza dôležitosti atribútov}
+
+Hoci neurónové siete (LSTM) dosiahli v klasifikácii najlepšie výsledky, ich nevýhodou je nízka interpretovateľnosť (tzv. „black-box“ modely). 
+Z ich vnútornej štruktúry je náročné určiť, ktorý konkrétny čas alebo deň rozhodol o zaradení trasy.
+
+Aby sme lepšie pochopili, ktoré časové okná nesú najviac informácie pre rozlíšenie cyklotrás, vrátili sme sa k analýze dôležitosti atribútov pri modeloch 
+\textit{logistickej regresii} a \textit{náhodných lesov}. Dáta sme pre prehľadnosť zoskupili podľa dní v týždni a častí dňa (Noc, Ráno, Obed, Popoludnie, Večer).
+
+Pri lineárnom modeli sa ukázalo na Obrázku \ref{obr:graf_lgr}, že koeficienty dôležitosti sú rozdelené chaoticky.
+Model nedokázal nájsť jeden dominantný časový úsek, ktorý by univerzálne slúžil na identifikáciu trasy. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/logistic\_regression\_importance.png}
+    \caption{Rozloženie dôležitosti atribútov pri Logistickej regresii – bez jasného vzoru.}
+    \label{obr:graf_lgr}
+\end{figure}
+
+
+Na rozdiel od regresie, model náhodných lesov odhalil logické a jasne interpretovateľné vzory správania, ktoré pomáhajú klasifikovať trasy:
+Noc má zanedbateľný vplyv na klasifikáciu (nízky koeficient). Keďže v noci je aktivita minimálna na všetkých trasách rovnako, tento časový úsek nenesie žiadnu rozlišovaciu informáciu.
+Ráno (Po – Str, Ned): Ranná špička je kľúčovým identifikátorom najmä v prvej polovici pracovného týždňa a prekvapivo aj v nedeľu (športová aktivita).
+Obed (Pia, So): S blížiacim sa víkendom sa ťažisko dôležitosti presúva. V piatok a sobotu je pre rozlíšenie trasy najpodstatnejšia aktivita okolo obeda.
+Popoludnie si zachováva relatívne vysokú dôležitosť počas celého týždňa, čo značí, že poobedné návraty z práce alebo výletov sú silným signálom pre model.
+Počas víkendových večerov dôležitosť opäť klesá.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/random\_forest\_importance.png}
+    \caption{Dôležitosť atribútov pri modeli Random Forest – viditeľné trendy pre rána a obedy.}
+    \label{obr:graf_rfc}
+\end{figure}
+
+
+Úspešné modely a následná analýza ukázali, že cyklotrasy v Bratislave majú svoje unikátne časové profily. Zatiaľ čo jednoduché modely dokážu zachytiť základné trendy 
+(napríklad rozdiel medzi pracovným ránom a víkendovým obedom), pre presnú klasifikáciu konkrétnej lokality je nevyhnutné použiť komplexnejšie modely neurónových sietí, 
+ktoré vnímajú týždeň ako spojitú sekvenciu.
