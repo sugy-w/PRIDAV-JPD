@@ -17,7 +17,7 @@ Tento proces mal tieto kroky:
     \item \textbf{Normalizácia}: Všetky vstupné hodnoty sme štandardizovali pre \textit{logistickú regresiu} a
     škálovali na interval $[0,1]$ pre \textit{neurónovú sieť}.
     \item \textbf{Encoding}: Názov cyklotrasy sme najprv očíslovali pomocou \textit{LabelEncoder}
-    a potom previedli na pravdepodobnosti pomocou \textit{to\_categorical} z knižnice \textit{keras}.
+    a potom previedli na binárne vektory pomocou \textit{to\_categorical} z knižnice \textit{keras}.
 \end{itemize}
 
 \section{Použité modely}
@@ -36,7 +36,7 @@ Model dosiahol nízku presnosť ($19\%$). To značí, že posudzovať jednotliv�
 pretože mnohé trasy majú v určitých hodinách podobný počet cyklistov a ťažko sa dá vyčítať nejaké trendy. 
 Zároveň je na Obrázku \ref{obr:cm_lgr1} možné pozorovať, že model sa skôr naučil početnosti trás, 
 pretože predikoval najčastejšie trasy v dátach, dokonca sa vôbec nesnažil predikovať tie menej vyskytujúce. 
-To nám ukázalo problém nevývaženosti dát, v matici nie je takmer nič na diagonále - tzn. veľmi malú nepresnosť.
+To nám ukázalo problém nevývaženosti dát, v matici nie je takmer nič na diagonále - tzn. veľmi nízku presnosť.
 
 \begin{figure}[H]
     \centering
@@ -80,8 +80,7 @@ Na nasledujúcom obrázku \ref{obr:cm_lgr2} môžeme pozorovať, ako model klasi
     \label{obr:cm_lgr2}
 \end{figure}
 
-<<<<<<< HEAD
-Z tejto vizualizácie môžeme mať radosť, pretože `svetlé' štvorčeky sú prevažne na diagonále, čo zn. lepšiu presnosť.
+Z tejto vizualizácie možno model hodnotiť pozitívne, pretože `svetlé' štvorčeky sú prevažne na diagonále, čo znamená lepšiu presnosť.
 
 Detailnejší pohľad na výkonnosť pre jednotlivé triedy metriky Precision (presnosť), Recall (návratnosť) a F1-skóre. 
 Tieto hodnoty sú kľúčové najmä kvôli spomínanej nevyváženosti datasetu, kde dominantné triedy (trasy s dlhou históriou) môžu skresľovať celkovú úspešnosť.
@@ -150,11 +149,11 @@ Model nedokázal nájsť jeden dominantný časový úsek, ktorý by univerzáln
 
 
 Na rozdiel od regresie, model náhodných lesov odhalil logické a jasne interpretovateľné vzory správania, ktoré pomáhajú klasifikovať trasy:
-Noc má zanedbateľný vplyv na klasifikáciu (nízky koeficient). Keďže v noci je aktivita minimálna na všetkých trasách rovnako, tento časový úsek nenesie žiadnu rozlišovaciu informáciu.
-Ráno (Po – Str, Ned): Ranná špička je kľúčovým identifikátorom najmä v prvej polovici pracovného týždňa a prekvapivo aj v nedeľu (športová aktivita).
-Obed (Pia, So): S blížiacim sa víkendom sa ťažisko dôležitosti presúva. V piatok a sobotu je pre rozlíšenie trasy najpodstatnejšia aktivita okolo obeda.
-Popoludnie si zachováva relatívne vysokú dôležitosť počas celého týždňa, čo značí, že poobedné návraty z práce alebo výletov sú silným signálom pre model.
-Počas víkendových večerov dôležitosť opäť klesá.
+\textbf{Noc} má zanedbateľný vplyv na klasifikáciu (nízky koeficient). Keďže v noci je aktivita minimálna na všetkých trasách rovnako, tento časový úsek nenesie žiadnu rozlišovaciu informáciu.
+\textbf{Ráno (Po – Str, Ned)}: Ranná špička je kľúčovým identifikátorom najmä v prvej polovici pracovného týždňa a prekvapivo aj v nedeľu (športová aktivita).
+\textbf{Obed (Pia, So)}: S blížiacim sa víkendom sa ťažisko dôležitosti presúva. V piatok a sobotu je pre rozlíšenie trasy najpodstatnejšia aktivita okolo obeda.
+\textbf{Popoludnie} si zachováva relatívne vysokú dôležitosť počas celého týždňa, čo značí, že poobedné návraty z práce alebo výletov sú silným signálom pre model.
+Počas \textbf{víkendových večerov} dôležitosť opäť klesá.
 
 \begin{figure}[H]
     \centering
@@ -167,6 +166,3 @@ Počas víkendových večerov dôležitosť opäť klesá.
 Úspešné modely a následná analýza ukázali, že cyklotrasy v Bratislave majú svoje unikátne časové profily. Zatiaľ čo jednoduché modely dokážu zachytiť základné trendy 
 (napríklad rozdiel medzi pracovným ránom a víkendovým obedom), pre presnú klasifikáciu konkrétnej lokality je nevyhnutné použiť komplexnejšie modely neurónových sietí, 
 ktoré vnímajú týždeň ako spojitú sekvenciu.
-=======
-Z tejto vizualizácie môžeme mať radosť, pretože `svetlé' štvorčeky sú prevažne na diagonále, čo zn. lepšia presnosť
->>>>>>> 55ecc1c67b61bdbd891fde8f5c00be5cfb324cf3
